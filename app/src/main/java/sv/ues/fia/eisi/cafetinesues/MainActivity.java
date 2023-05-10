@@ -28,7 +28,7 @@ public class MainActivity extends ListActivity {
 
 // Listado con toddos los menus disponibles, DE AQUI SE ELEGIRÁ A LO QUE CADA USUARIO TIENE ACCESO
     String[] allOptions = {
-        "Gestionar Encargados","Gestionar Locales","Gestionar Facultades","Gestionar Producto","Gestionar Combo","Gestionar Combo/Producto"
+        "Gestionar Encargados","Gestionar Locales","Gestionar Facultades","Gestionar Producto","Gestionar Combo","Gestionar Combo/Producto","Gestionar Zona","Gestionar Producto",
     };
 
     ArrayList<String> MenuActivities = new ArrayList<String>(); // Listado para agregar las MenuActivities a las que tiene acceso un usuario.
@@ -41,6 +41,8 @@ public class MainActivity extends ListActivity {
             "pm11074.Facultad.FacultadMenuActivity",
             "ql17001activities.horario.HorarioMenuActivity",
             "hr17016activities.salon.salonMenuActivity",
+            "hr17016activities.tiposalon.tipoSalonMenuActivity",
+            "hr17016activities.tiposalon.tipoSalonMenuActivity",
             "hr17016activities.tiposalon.tipoSalonMenuActivity"
     };
 

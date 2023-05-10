@@ -2,6 +2,7 @@ package sv.ues.fia.eisi.cafetinesues.pm11074.Encargado;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -10,7 +11,7 @@ import android.widget.Toast;
 import sv.ues.fia.eisi.cafetinesues.ControlBD;
 import sv.ues.fia.eisi.cafetinesues.R;
 
-public class ActualizarEncargadoActivity extends AppCompatActivity {
+public class ActualizarEncargadoActivity extends Activity {
 
     ControlBD helper;
     EditText editId;

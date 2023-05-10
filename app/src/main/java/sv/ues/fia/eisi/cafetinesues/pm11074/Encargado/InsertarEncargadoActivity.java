@@ -39,9 +39,9 @@ public class InsertarEncargadoActivity extends Activity {
         helper.cerrar();
         Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
     }
+
     public void limpiarTexto(View v) {
         editId.setText("");
         editNombre.setText("");
     }
-
 }

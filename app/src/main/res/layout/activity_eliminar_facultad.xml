@@ -5,12 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".pm11074.Encargado.EliminarEncargadoActivity">
+    tools:context=".pm11074.Facultad.EliminarFacultadActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/identificador" />
+        android:text="@string/idFacultad" />
 
     <EditText
         android:id="@+id/editId"
@@ -23,6 +23,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/eliminar"
-        android:onClick="eliminarEncargado"/>
+        android:onClick="eliminarFacultad"/>
 
 </LinearLayout>

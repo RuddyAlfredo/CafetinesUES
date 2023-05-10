@@ -25,6 +25,8 @@ public class ControlBD {
     private static final String[] camposOpcionCrud = new String[] {"idOpcion","desOpcion","numCrud"};
 
     private static final String[] camposEncargado = new String[] {"idEncargado","nomEncargado"};
+    private static final String[] camposLocal = new String[] {"idLocal","idEncargado","nomLocal","esInterno"};
+    private static final String[] camposFacultad = new String[] {"idFacultad","nomFacultad"};
 
 
 
@@ -54,7 +56,7 @@ public class ControlBD {
                 db.execSQL("CREATE TABLE accesoUsuario( idUsuario VARCHAR(2), idOpcion VARCHAR(3), PRIMARY KEY(idUsuario, idOpcion), FOREIGN KEY(idUsuario) REFERENCES usuario(idUsuario), FOREIGN KEY(idOpcion) REFERENCES opcionCrud(idOpcion));");
 
                 db.execSQL("CREATE TABLE encargado( idEncargado VARCHAR(2) PRIMARY KEY, nomEncargado VARCHAR(30) NOT NULL);");
-                db.execSQL("CREATE TABLE local( idLocal VARCHAR(2) PRIMARY KEY, idEncargado VARCHAR(2), nomLocal VARCHAR(30) NOT NULL, FOREIGN KEY(idEncargado) REFERENCES encargado(idEncargado));");
+                db.execSQL("CREATE TABLE local( idLocal VARCHAR(2) PRIMARY KEY, idEncargado VARCHAR(2), nomLocal VARCHAR(30) NOT NULL, esInterno boolean, FOREIGN KEY(idEncargado) REFERENCES encargado(idEncargado));");
                 db.execSQL("CREATE TABLE facultad( idFacultad VARCHAR(2) PRIMARY KEY, nomFacultad VARCHAR(30) NOT NULL);");
 
 
@@ -117,36 +119,42 @@ public class ControlBD {
 
     // VALORES PARA OPCIONCRUD---------( POR AHORA SON 22)------------------------------
         final String[] valIdOpcion = {
-                "001","002","003","004","005","006", // ID's para opciones de gestionar (se reserva desde el 001 hasta el 020)
+                "001","002","003","004","005","006","007","008", // ID's para opciones de gestionar (se reserva desde el 001 hasta el 020)
                 "021","022","023","024", // ID's para las opciones del CRUD de Encargado.
                 "025","026","027","028", // ID's para las opciones del CRUD de Local.
                 "029","030","031","032", // ID's para las opciones del CRUD de Facultad.
                 "033","034","035","036", // ID's para las opciones del CRUD de Pedido.
+                "037","038","039","040", // ID's para las opciones del CRUD de ZONA.
+                "041","042","043","044", // ID's para las opciones del CRUD de Producto.
         };
         final String[] valDesOpcion = {
-                "Gestionar Encargados","Gestionar Locales","Gestionar Facultades","Gestionar Pedido","Gestionar Combo","Gestionar Combo/Producto",
+                "Gestionar Encargados","Gestionar Locales","Gestionar Facultades","Gestionar Pedido","Gestionar Combo","Gestionar Combo/Producto","Gestionar Zona","Gestionar Producto",
                 "Insertar Encargado","Consultar Encargado","Borrar Encargado","Actualizar Encargado", //CRUD Encargados.
                 "Insertar Local","Consultar Local","Borrar Local","Actualizar Local", //CRUD Locales.
                 "Insertar Facultad","Consultar Facultad","Borrar Facultad","Actualizar Facultad", //CRUD ingredientes.
-                "Insertar Pedido", "Consultar Pedido","Eliminar Pedido","Actualizar Pedido" // CRUD Pedidos.
+                "Insertar Pedido", "Consultar Pedido","Eliminar Pedido","Actualizar Pedido", // CRUD Pedidos.
+                "Insertar Zona", "Consultar Zona","Eliminar Zona","Actualizar Zona", // CRUD Zona.
+                "Insertar Producto", "Consultar Producto","Eliminar Producto","Actualizar Producto" // CRUD Producto.
         };
         final int[] valNumCrud = {
-                0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0,
                 1, 2, 3, 4,
                 1, 2, 3, 4,
                 1, 2, 3, 4,
-                1, 2, 3, 4
+                1, 2, 3, 4,
+                1, 2, 3, 4,
+                1, 2, 3, 4,
         };
 
     // VALORES PARA ACCESOUSUARIO-------( POR AHORA SON 26)----------------------------
         final String[] valAccesoIdUsuario = {
-                "01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01",// ID del Admin (22 veces)
-                "02","02","02","02","02",  // ID del cliente1 3 veces pues solo le permitimos 3 opciones
+                "01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01",// ID del Admin (22 veces)
+                "02","02","02","02",  // ID del cliente1 3 veces pues solo le permitimos 3 opciones
                 "03","03","03","03","03"    // ID del encargado1 (para ejemplo solo le permitimos crear y consultar INGREDIENTE)
         };
         final String[] valAccesoIdOpcion = {                // El admin tiene acceso a todo (las 22 opciones hasta ahora)
-                "001","002","003","004","005","006", "021","022","023","024","025","026","027","028","029","030","031","032","033","034","035","036",
-                "004","033","034","035","036",  // El cliente puede ver el la gestion de Pedido y solo crear/consultar (por eso 3 opciones)
+                "001","002","003","004","005","006","007","008","021","022","023","024","025","026","027","028","029","030","031","032","033","034","035","036","037","038","039","040","041","042","043","044",
+                "004","033","034","036",  // El cliente puede ver el la gestion de Pedido y solo crear/consultar (por eso 3 opciones)
                 "002","025","026","027","028"  // El encargado 1 puede ver el la gestion de Productos y solo crear/consultar (por eso 3 opciones)
         };
 
@@ -255,6 +263,71 @@ public class ControlBD {
 
 
 
+// FACULTAD ======
+public String insertar(Facultad facultad){ // PM11074 =========
+    String regInsertados = "Registro Insertado Nº= ";
+    long contador = 0;
+
+    ContentValues facu = new ContentValues();
+    facu.put("idFacultad", facultad.getIdFacultad());
+    facu.put("nomFacultad", facultad.getNomFacultad());
+
+    contador = db.insert("facultad", null, facu);
+
+    if(contador == -1 || contador == 0) {
+        regInsertados = "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
+    }
+    else {
+        regInsertados = regInsertados + contador;
+    }
+    return regInsertados;
+}
+
+    public Facultad consultarFacultad(String idFac){ // PM11074 =========
+        String[] id = {idFac};
+        Cursor cursor = db.query("facultad", camposFacultad, "idFacultad = ?", id, null, null, null);
+        if(cursor.moveToFirst()){
+            Facultad facultad = new Facultad();
+            facultad.setIdFacultad(cursor.getString(0));
+            facultad.setNomFacultad(cursor.getString(1));
+
+            return facultad;
+        }else{
+            return null;
+        }
+    }
+
+    public String eliminar(Facultad facultad){  // PM11074 =========
+        String regAfectados="El registro no existe";
+        int contador = 0;
+
+        if (verificarIntegridad(facultad,3)) {
+            contador += db.delete("facultad", "idFacultad ='" + facultad.getIdFacultad() + "'", null);
+            regAfectados = "filas afectadas = " + contador;
+        }
+        return regAfectados;
+    }
+
+    public String actualizar(Facultad facultad){  // PM11074 =========
+        if(verificarIntegridad(facultad, 3)){
+            String[] id = {facultad.getIdFacultad()};
+            ContentValues cv = new ContentValues();
+            cv.put("idFacultad", facultad.getIdFacultad());
+            cv.put("nomFacultad", facultad.getNomFacultad());
+            db.update("facultad", cv, "idFacultad = ?", id);
+            return "Registro Actualizado Correctamente";
+        }else{
+            return "Registro con carnet " + facultad.getIdFacultad() + " no existe";
+        }
+    }
+
+
+
+
+
+
+
+
     public String validarUsuario(String user, String clave){
         String[] id = {user, clave};
         Cursor cursor = db.query("usuario", camposUsuario, "nomUsuario = ? AND clave = ?", id, null, null, null);
@@ -326,6 +399,7 @@ public class ControlBD {
                 }
                 return false;
             }
+
             default:
                 return false;
         }

@@ -1,8 +1,7 @@
-package sv.ues.fia.eisi.cafetinesues.pm11074.Encargado;
+package sv.ues.fia.eisi.cafetinesues.pm11074.Facultad;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -10,8 +9,9 @@ import android.widget.Toast;
 
 import sv.ues.fia.eisi.cafetinesues.ControlBD;
 import sv.ues.fia.eisi.cafetinesues.R;
+import sv.ues.fia.eisi.cafetinesues.pm11074.Encargado.Encargado;
 
-public class EliminarEncargadoActivity extends Activity {
+public class EliminarFacultadActivity extends AppCompatActivity {
 
     EditText editId;
     ControlBD helper;
@@ -19,19 +19,18 @@ public class EliminarEncargadoActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_eliminar_encargado);
+        setContentView(R.layout.activity_eliminar_facultad);
         helper = new ControlBD(this);
         editId = (EditText) findViewById(R.id.editId);
     }
 
-    public void eliminarEncargado(View v){
+    public void eliminarFacultad(View v){
         String regEliminados;
-        Encargado enc = new Encargado();
-        enc.setIdEncargado(editId.getText().toString());
+        Facultad fac = new Facultad();
+        fac.setIdFacultad(editId.getText().toString());
         helper.abrir();
-        regEliminados = helper.eliminar(enc);
+        regEliminados = helper.eliminar(fac);
         helper.cerrar();
         Toast.makeText(this, regEliminados, Toast.LENGTH_SHORT).show();
     }
-
 }

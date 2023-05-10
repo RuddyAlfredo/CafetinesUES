@@ -12,20 +12,25 @@
         android:theme="@style/Theme.CafetinesUES"
         tools:targetApi="31">
         <activity
-            android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Encargado.ActualizarEncargadoActivity"
-             />
+            android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Facultad.InsertarFacultadActivity"
+            android:exported="false" />
         <activity
-            android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Encargado.ConsultarEncargadoActivity"
-             />
+            android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Facultad.EliminarFacultadActivity"
+            android:exported="false" />
         <activity
-            android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Encargado.EliminarEncargadoActivity"
-             />
+            android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Facultad.ConsultarFacultadActivity"
+            android:exported="false" />
         <activity
-            android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Encargado.InsertarEncargadoActivity"
-             />
+            android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Facultad.ActualizarFacultadActivity"
+            android:exported="false" />
         <activity
-            android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Encargado.EncargadoMenuActivity"
-             />
+            android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Facultad.FacultadMenuActivity"
+            android:exported="false" />
+        <activity android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Encargado.ActualizarEncargadoActivity" />
+        <activity android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Encargado.ConsultarEncargadoActivity" />
+        <activity android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Encargado.EliminarEncargadoActivity" />
+        <activity android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Encargado.InsertarEncargadoActivity" />
+        <activity android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Encargado.EncargadoMenuActivity" />
         <activity
             android:name=".IniciarSesion"
             android:exported="true">

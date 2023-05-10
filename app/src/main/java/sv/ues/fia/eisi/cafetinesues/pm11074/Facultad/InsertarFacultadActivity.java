@@ -1,4 +1,4 @@
-package sv.ues.fia.eisi.cafetinesues.pm11074.Encargado;
+package sv.ues.fia.eisi.cafetinesues.pm11074.Facultad;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,8 +10,9 @@ import android.widget.Toast;
 
 import sv.ues.fia.eisi.cafetinesues.ControlBD;
 import sv.ues.fia.eisi.cafetinesues.R;
+import sv.ues.fia.eisi.cafetinesues.pm11074.Encargado.Encargado;
 
-public class ConsultarEncargadoActivity extends Activity {
+public class InsertarFacultadActivity extends Activity {
 
     ControlBD helper;
     EditText editId;
@@ -20,21 +21,24 @@ public class ConsultarEncargadoActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_consultar_encargado);
+        setContentView(R.layout.activity_insertar_facultad);
         helper = new ControlBD(this);
         editId = (EditText) findViewById(R.id.editId);
         editNombre = (EditText) findViewById(R.id.editNombre);
     }
 
-    public void consultarEncargado(View v) {
+    public void insertarFacultad(View v) {
+        String id = editId.getText().toString();
+        String nombre = editNombre.getText().toString();
+
+        String regInsertados;
+        Facultad facultad = new Facultad();
+        facultad.setIdFacultad(id);
+        facultad.setNomFacultad(nombre);
         helper.abrir();
-        Encargado encargado = helper.consultarEncargado(editId.getText().toString());
+        regInsertados = helper.insertar(facultad);
         helper.cerrar();
-        if(encargado == null)
-            Toast.makeText(this, "Encargado con Id " + editId.getText().toString() + " no encontrado", Toast.LENGTH_LONG).show();
-        else{
-            editNombre.setText(encargado.getNomEncargado());
-        }
+        Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
     }
 
     public void limpiarTexto(View v) {

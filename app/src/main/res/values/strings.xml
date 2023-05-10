@@ -12,4 +12,6 @@
     <string name="consultar">Consultar</string>
     <string name="actualizar">Actualizar</string>
     <string name="eliminar">Eliminar</string>
+    <string name="idFacultad">Id Facultad</string>
+    <string name="nombreFacu">Nombre Facultad</string>
 </resources>
