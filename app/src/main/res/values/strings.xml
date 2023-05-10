@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Cafetines UES</string>
+    <string name="logUsuario">Nombre de Usuario</string>
+    <string name="logClave">Contraseña</string>
+    <string name="ingresar">Ingresar</string>
+    <string name="llenarBD">Llenar Base de Datos</string>
+    <string name="cerrarSesion">Cerrar Sesión</string>
+    <string name="insertar">Insertar</string>
+    <string name="limpiar">Limpiar</string>
+    <string name="nombre">Nombre</string>
+    <string name="identificador">Identificador</string>
+    <string name="consultar">Consultar</string>
+    <string name="actualizar">Actualizar</string>
+    <string name="eliminar">Eliminar</string>
+</resources>
