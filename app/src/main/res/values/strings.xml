@@ -14,4 +14,8 @@
     <string name="eliminar">Eliminar</string>
     <string name="idFacultad">Id Facultad</string>
     <string name="nombreFacu">Nombre Facultad</string>
+    <string name="idLocal">Id de Local</string>
+    <string name="idEncargado">Id de Encargado</string>
+    <string name="opcionEsInterno">Es Interno</string>
+    <string name="nombreEnc">Encargado</string>
 </resources>

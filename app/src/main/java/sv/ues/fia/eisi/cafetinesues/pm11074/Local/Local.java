@@ -2,15 +2,17 @@ package sv.ues.fia.eisi.cafetinesues.pm11074.Local;
 
 public class Local {
     private String idLocal;
+    private String idEncargado;
     private String nomLocal;
-    private boolean esInterno;
+    private int esInterno;
 
     public Local() {
 
     }
 
-    public Local(String idLocal, String nomLocal, boolean esInterno) {
+    public Local(String idLocal, String idEncargado, String nomLocal, int esInterno) {
         this.idLocal = idLocal;
+        this.idEncargado = idEncargado;
         this.nomLocal = nomLocal;
         this.esInterno = esInterno;
     }
@@ -23,6 +25,14 @@ public class Local {
         return idLocal;
     }
 
+    public void setIdEncargado(String idEncargado) {
+        this.idEncargado = idEncargado;
+    }
+
+    public String getIdEncargado() {
+        return idEncargado;
+    }
+
     public void setNomLocal(String nomLocal) {
         this.nomLocal = nomLocal;
     }
@@ -31,11 +41,11 @@ public class Local {
         return nomLocal;
     }
 
-    public void setEsInterno(boolean esInterno) {
+    public void setEsInterno(int esInterno) {
         this.esInterno = esInterno;
     }
 
-    public boolean getEsInterno() {
+    public int getEsInterno() {
         return esInterno;
     }
 }

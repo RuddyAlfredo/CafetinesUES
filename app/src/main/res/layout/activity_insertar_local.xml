@@ -4,14 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="10dip"
+    android:paddingTop="30dip"
     android:stretchColumns="1"
-    tools:context=".pm11074.Encargado.ActualizarEncargadoActivity">
+    tools:context=".pm11074.Local.InsertarLocalActivity">
 
     <TableRow>
-        <TextView android:text="@string/identificador" />
+        <TextView android:text="@string/idLocal"/>
         <EditText
             android:id="@+id/editId"
+            android:inputType="text"
+            android:maxLength="2" />
+    </TableRow>
+    <TableRow>
+        <TextView android:text="@string/idEncargado"/>
+        <EditText
+            android:id="@+id/editIdEnc"
             android:inputType="text"
             android:maxLength="2" />
     </TableRow>
@@ -24,15 +31,23 @@
     </TableRow>
 
     <TableRow>
-        <Button
-            android:onClick="actualizarEncargado"
-            android:text="@string/actualizar" />
+        <TextView
+            android:layout_gravity="center|left"
+            android:text="@string/opcionEsInterno" />
+        <CheckBox
+            android:id="@+id/checkEsInterno"
+            android:layout_gravity="left" />
     </TableRow>
 
     <TableRow>
         <Button
+            android:onClick="insertarLocal"
+            android:text="@string/insertar" />
+        <Button
             android:onClick="limpiarTexto"
-            android:text="@string/limpiar" />
+            android:text="@string/limpiar"
+            android:layout_marginHorizontal="50dp"/>
+
     </TableRow>
 
 </TableLayout>

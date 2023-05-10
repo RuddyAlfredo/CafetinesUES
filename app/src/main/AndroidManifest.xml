@@ -11,21 +11,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CafetinesUES"
         tools:targetApi="31">
-        <activity
-            android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Facultad.InsertarFacultadActivity"
-            android:exported="false" />
-        <activity
-            android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Facultad.EliminarFacultadActivity"
-            android:exported="false" />
-        <activity
-            android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Facultad.ConsultarFacultadActivity"
-            android:exported="false" />
-        <activity
-            android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Facultad.ActualizarFacultadActivity"
-            android:exported="false" />
-        <activity
-            android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Facultad.FacultadMenuActivity"
-            android:exported="false" />
+
+
+        <activity android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Local.ActualizarLocalActivity" />
+        <activity android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Local.EliminarLocalActivity" />
+        <activity android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Local.ConsultarLocalActivity" />
+        <activity android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Local.InsertarLocalActivity" />
+        <activity android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Local.LocalMenuActivity" />
+
+        <activity android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Facultad.InsertarFacultadActivity" />
+        <activity android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Facultad.EliminarFacultadActivity" />
+        <activity android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Facultad.ConsultarFacultadActivity" />
+        <activity android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Facultad.ActualizarFacultadActivity" />
+        <activity android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Facultad.FacultadMenuActivity" />
+
         <activity android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Encargado.ActualizarEncargadoActivity" />
         <activity android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Encargado.ConsultarEncargadoActivity" />
         <activity android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Encargado.EliminarEncargadoActivity" />

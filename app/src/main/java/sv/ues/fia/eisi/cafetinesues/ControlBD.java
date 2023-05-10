@@ -53,10 +53,10 @@ public class ControlBD {
             try {
                 db.execSQL("CREATE TABLE usuario( idUsuario VARCHAR(2) PRIMARY KEY, nomUsuario VARCHAR(30), clave VARCHAR(5));");
                 db.execSQL("CREATE TABLE opcionCrud(idOpcion VARCHAR(3), desOpcion VARCHAR(30), numCrud INTEGER);");
-                db.execSQL("CREATE TABLE accesoUsuario( idUsuario VARCHAR(2), idOpcion VARCHAR(3), PRIMARY KEY(idUsuario, idOpcion), FOREIGN KEY(idUsuario) REFERENCES usuario(idUsuario), FOREIGN KEY(idOpcion) REFERENCES opcionCrud(idOpcion));");
+                db.execSQL("CREATE TABLE accesoUsuario( idUsuario VARCHAR(2), idOpcion VARCHAR(3), PRIMARY KEY(idUsuario, idOpcion),CONSTRAINT fk_usuario FOREIGN KEY(idUsuario) REFERENCES usuario(idUsuario),CONSTRAINT fk_opcion FOREIGN KEY(idOpcion) REFERENCES opcionCrud(idOpcion));");
 
                 db.execSQL("CREATE TABLE encargado( idEncargado VARCHAR(2) PRIMARY KEY, nomEncargado VARCHAR(30) NOT NULL);");
-                db.execSQL("CREATE TABLE local( idLocal VARCHAR(2) PRIMARY KEY, idEncargado VARCHAR(2), nomLocal VARCHAR(30) NOT NULL, esInterno boolean, FOREIGN KEY(idEncargado) REFERENCES encargado(idEncargado));");
+                db.execSQL("CREATE TABLE local( idLocal VARCHAR(2) PRIMARY KEY, idEncargado VARCHAR(2), nomLocal VARCHAR(30) NOT NULL, esInterno INTEGER, CONSTRAINT fk_encargado FOREIGN KEY(idEncargado) REFERENCES encargado(idEncargado) ON DELETE RESTRICT);");
                 db.execSQL("CREATE TABLE facultad( idFacultad VARCHAR(2) PRIMARY KEY, nomFacultad VARCHAR(30) NOT NULL);");
 
 
@@ -260,28 +260,112 @@ public class ControlBD {
     }
 
 // LOCAL ======
+    public String insertar(Local local){ // PM11074 =========
+        String regInsertados="Registro Insertado Nº= ";
+        long contador=0;
 
+        ContentValues loc = new ContentValues();
+        loc.put("idLocal", local.getIdLocal());
+        loc.put("idEncargado", local.getIdEncargado());
+        loc.put("nomLocal", local.getNomLocal());
+        loc.put("esInterno", local.getEsInterno());
 
+        Encargado e = new Encargado(); // Pa verificar que exite el encargado asignado
+        e.setIdEncargado(local.getIdEncargado());
+        if(verificarIntegridad(e,1)) {
+            contador = db.insert("local", null, loc);
+
+            if (contador == -1 || contador == 0) {
+                regInsertados = "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
+            } else {
+                regInsertados = regInsertados + contador;
+            }
+            return regInsertados;
+        }
+        else
+            return "El encargado con Id: " + local.getIdEncargado() +" NO existe";
+    }
+
+    public Local consultarLocal(String idLoc, String nomLoc){ // PM11074 =========
+
+        String[] id = {idLoc, nomLoc};
+        Cursor cursor = db.query("local", camposLocal, "idLocal = ? AND LOWER(nomLocal) = LOWER(?)", id, null, null, null);
+
+        if(cursor.moveToFirst()){
+            Local local = new Local();
+            local.setIdLocal(cursor.getString(0));
+
+            String[] idE = {cursor.getString(1)}; // BUscar al encargado de este loacl
+            Cursor cursor2 = db.query("encargado", camposEncargado, "idEncargado = ?", idE, null, null, null);
+            if(cursor2.moveToFirst()) {
+                local.setIdEncargado(cursor.getString(1) + " - " + cursor2.getString(1));
+            }else{
+                local.setIdEncargado("No tiene encargado Asignado");
+            }
+
+            local.setNomLocal(cursor.getString(2));
+            local.setEsInterno(cursor.getInt(3));
+
+            return local;
+        }else{
+            return null;
+        }
+    }
+
+    public String eliminar(Local local){  // PM11074 =========
+        String regAfectados="El registro no existe";
+        int contador = 0;
+
+        if (verificarIntegridad(local,2)) {
+            contador += db.delete("local", "idLocal ='" + local.getIdLocal() + "'", null);
+            regAfectados = "filas afectadas = " + contador;
+        }
+        return regAfectados;
+    }
+
+    public String actualizar(Local local){  // PM11074 =========
+        if(verificarIntegridad(local, 2)){
+            String[] id = {local.getIdLocal()};
+            ContentValues cv = new ContentValues();
+
+            cv.put("idLocal", local.getIdLocal());
+
+            String[] idE = {local.getIdEncargado()}; // BUscar al encargado de este loacl
+            Cursor cursor = db.query("encargado", camposEncargado, "idEncargado = ?", idE, null, null, null);
+            if(cursor.moveToFirst()) {
+                cv.put("idEncargado", local.getIdEncargado());
+            }else{
+                return "Encargado con Id " + local.getIdEncargado() + " no existe";
+            }
+            cv.put("nomLocal", local.getNomLocal());
+            cv.put("esInterno", local.getEsInterno());
+
+            db.update("local", cv, "idLocal = ?", id);
+            return "Registro Actualizado Correctamente";
+        }else{
+            return "Local con Id " + local.getIdLocal() + " no existe";
+        }
+    }
 
 // FACULTAD ======
-public String insertar(Facultad facultad){ // PM11074 =========
-    String regInsertados = "Registro Insertado Nº= ";
-    long contador = 0;
+    public String insertar(Facultad facultad){ // PM11074 =========
+        String regInsertados = "Registro Insertado Nº= ";
+        long contador = 0;
 
-    ContentValues facu = new ContentValues();
-    facu.put("idFacultad", facultad.getIdFacultad());
-    facu.put("nomFacultad", facultad.getNomFacultad());
+        ContentValues facu = new ContentValues();
+        facu.put("idFacultad", facultad.getIdFacultad());
+        facu.put("nomFacultad", facultad.getNomFacultad());
 
-    contador = db.insert("facultad", null, facu);
+        contador = db.insert("facultad", null, facu);
 
-    if(contador == -1 || contador == 0) {
-        regInsertados = "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
+        if(contador == -1 || contador == 0) {
+            regInsertados = "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
+        }
+        else {
+            regInsertados = regInsertados + contador;
+        }
+        return regInsertados;
     }
-    else {
-        regInsertados = regInsertados + contador;
-    }
-    return regInsertados;
-}
 
     public Facultad consultarFacultad(String idFac){ // PM11074 =========
         String[] id = {idFac};

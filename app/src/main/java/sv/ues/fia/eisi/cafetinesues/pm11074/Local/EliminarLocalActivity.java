@@ -1,6 +1,4 @@
-package sv.ues.fia.eisi.cafetinesues.pm11074.Encargado;
-
-import androidx.appcompat.app.AppCompatActivity;
+package sv.ues.fia.eisi.cafetinesues.pm11074.Local;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -10,26 +8,27 @@ import android.widget.Toast;
 
 import sv.ues.fia.eisi.cafetinesues.ControlBD;
 import sv.ues.fia.eisi.cafetinesues.R;
+import sv.ues.fia.eisi.cafetinesues.pm11074.Encargado.Encargado;
 
-public class EliminarEncargadoActivity extends Activity {
+public class EliminarLocalActivity extends Activity {
 
-    EditText editId;
     ControlBD helper;
+    EditText editId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_eliminar_encargado);
+        setContentView(R.layout.activity_eliminar_local);
         helper = new ControlBD(this);
         editId = (EditText) findViewById(R.id.editId);
     }
 
-    public void eliminarEncargado(View v){
+    public void eliminarLocal(View v){
         String regEliminados;
-        Encargado enc = new Encargado();
-        enc.setIdEncargado(editId.getText().toString());
+        Local local = new Local();
+        local.setIdLocal(editId.getText().toString());
         helper.abrir();
-        regEliminados = helper.eliminar(enc);
+        regEliminados = helper.eliminar(local);
         helper.cerrar();
         Toast.makeText(this, regEliminados, Toast.LENGTH_SHORT).show();
     }
