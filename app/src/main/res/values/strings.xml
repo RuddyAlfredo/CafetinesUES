@@ -33,4 +33,6 @@
     <string name="mensajeBorrar">¿Está seguro que desea borrar este elemento?</string>
     <string name="encargadoActual">Encargado Actual</string>
     <string name="encargadoNuevo">Encargado Nuevo</string>
+    <string name="idZona">Id de Zona</string>
+    <string name="nomZona">Nombre de Zona</string>
 </resources>
