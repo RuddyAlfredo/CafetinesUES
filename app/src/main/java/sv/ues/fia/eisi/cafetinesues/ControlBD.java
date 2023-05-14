@@ -418,7 +418,7 @@ public class ControlBD {
     }
 
 // ZONA ======
-    public ArrayList<Zona> consultarZona(){ // PM11074 =========
+    public ArrayList<Zona> consultarZona(){
         ArrayList<Zona> zonas = new ArrayList<>();
         Cursor cursor =db.rawQuery("SELECT * FROM zona",null);
         if(cursor.moveToFirst()){
@@ -432,7 +432,7 @@ public class ControlBD {
         return zonas;
     }
 
-    public String insertar(Zona zona){ // PM11074 ========
+    public String insertar(Zona zona){
         String regInsertados = "Registro Insertado Nº= ";
         long contador = 0;
 

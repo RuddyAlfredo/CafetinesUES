@@ -23,7 +23,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
@@ -32,17 +32,17 @@
 
         <EditText
             android:id="@+id/editId"
-            android:layout_width="200dp"
+            android:layout_width="138dp"
             android:layout_height="wrap_content"
-            android:inputType="text"
-            android:maxLength="2"/>
+            android:inputType="number"
+            android:maxLength="3" />
 
         <Button
-            android:id="@+id/eliminar"
+            android:id="@+id/botonConsultar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/eliminar"
-            android:onClick="preguntar"/>
+            android:text="@string/consultar"
+            android:onClick="consultarLocal" />
 
     </LinearLayout>
 
@@ -51,39 +51,36 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:orientation="vertical">
+
         <TextView
-            android:id="@+id/mensaje"
             android:layout_width="fill_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="20dp"
-            android:textAlignment="center"
-            android:text="@string/mensajeBorrar" />
+            android:layout_height="wrap_content"
+            android:text="@string/nombre" />
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/botones"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center">
+        <EditText
+            android:id="@+id/editNombre"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:inputType="text"
+            android:enabled ="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:cursorVisible="false"
+            android:longClickable="false" />
 
         <Button
-            android:id="@+id/botonSi"
+            android:id="@+id/eliminar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:backgroundTint="#DF4343"
-            android:onClick="eliminarLocal"
-            android:text="SI" />
+            android:text="@string/eliminar"
+            android:onClick="eliminarLocal"/>
 
-        <Button
-            android:id="@+id/botonNo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#69D669"
-            android:onClick="noEliminar"
-            android:text="NO" />
     </LinearLayout>
 
 </LinearLayout>
