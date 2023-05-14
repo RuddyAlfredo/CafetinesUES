@@ -33,6 +33,7 @@ public class FacultadMenuActivity extends ListActivity {
         setListAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, menu));
     }
 
+    @Override
     protected void onListItemClick(ListView l, View v, int position, long id){
         super.onListItemClick(l, v, position, id);
         String nombreValue = menuActivities.get(position);

@@ -8,21 +8,81 @@
     tools:context=".pm11074.Encargado.EliminarEncargadoActivity">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/identificador" />
+        android:id="@+id/idConsultarDiaClase"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:textAlignment="center"
+        android:text="@string/idEliminarEncargado"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="9pt"
+        android:textStyle="bold"></TextView>
 
-    <EditText
-        android:id="@+id/editId"
+    <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:inputType="text"
-        android:maxLength="2"/>
+        android:gravity="center"
+        android:orientation="vertical">
 
-    <Button
-        android:layout_width="wrap_content"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/identificador" />
+
+        <EditText
+            android:id="@+id/editId"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:maxLength="2"/>
+
+        <Button
+            android:id="@+id/eliminar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/eliminar"
+            android:onClick="preguntar"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/mensajeContenedor"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/eliminar"
-        android:onClick="eliminarEncargado"/>
+        android:gravity="center"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/mensaje"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:textAlignment="center"
+            android:text="@string/mensajeBorrar" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/botones"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/botonSi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:backgroundTint="#DF4343"
+            android:onClick="eliminarEncargado"
+            android:text="SI" />
+
+        <Button
+            android:id="@+id/botonNo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#69D669"
+            android:onClick="noEliminar"
+            android:text="NO" />
+    </LinearLayout>
 
 </LinearLayout>

@@ -8,46 +8,68 @@
     android:stretchColumns="1"
     tools:context=".pm11074.Local.InsertarLocalActivity">
 
-    <TableRow>
-        <TextView android:text="@string/idLocal"/>
-        <EditText
-            android:id="@+id/editId"
-            android:inputType="text"
-            android:maxLength="2" />
-    </TableRow>
-    <TableRow>
-        <TextView android:text="@string/idEncargado"/>
-        <EditText
-            android:id="@+id/editIdEnc"
-            android:inputType="text"
-            android:maxLength="2" />
-    </TableRow>
-    <TableRow>
-        <TextView android:text="@string/nombre" />
-        <EditText
-            android:id="@+id/editNombre"
-            android:inputType="text"
-            android:maxLength="30" />
-    </TableRow>
+    <TextView
+        android:id="@+id/idConsultarDiaClase"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:textAlignment="center"
+        android:text="@string/idInsertarLocal"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="9pt"
+        android:textStyle="bold"></TextView>>
 
-    <TableRow>
-        <TextView
-            android:layout_gravity="center|left"
-            android:text="@string/opcionEsInterno" />
-        <CheckBox
-            android:id="@+id/checkEsInterno"
-            android:layout_gravity="left" />
-    </TableRow>
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_marginLeft="5dp">
 
-    <TableRow>
-        <Button
-            android:onClick="insertarLocal"
-            android:text="@string/insertar" />
-        <Button
-            android:onClick="limpiarTexto"
-            android:text="@string/limpiar"
-            android:layout_marginHorizontal="50dp"/>
+        <TableRow>
+            <TextView
+                android:text="@string/idEncargado"
+                android:layout_marginTop="6dp"/>
 
-    </TableRow>
+            <Spinner
+                android:id="@+id/editIdEncSpinner"
+                android:minHeight="25dp"
+                android:layout_marginTop="5dp"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:text="@string/nombre"
+                android:gravity="center"/>
+
+            <EditText
+                android:id="@+id/editNombre"
+                android:layout_width="312dp"
+                android:inputType="text"
+                android:maxLength="50" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_gravity="center"
+                android:text="@string/opcionEsInterno" />
+            <CheckBox
+                android:id="@+id/checkEsInterno"
+                android:layout_gravity="left" />
+        </TableRow>
+    </TableLayout>
+
+    <TableLayout>
+        <TableRow
+            android:gravity="center"
+            android:layout_marginTop="20dp">
+            <Button
+                android:onClick="insertarLocal"
+                android:text="@string/insertar" />
+            <Button
+                android:onClick="limpiarTexto"
+                android:text="@string/limpiar"
+                android:layout_marginHorizontal="20dp"/>
+        </TableRow>
+    </TableLayout>
 
 </TableLayout>

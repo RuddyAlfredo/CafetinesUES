@@ -27,7 +27,6 @@ public class EncargadoMenuActivity extends ListActivity {
     ArrayList<String> menuActivities = new ArrayList<String>(); // menu a llenar con las activities permitidas.
     String[] activities = {"InsertarEncargadoActivity","ConsultarEncargadoActivity","EliminarEncargadoActivity", "ActualizarEncargadoActivity"};
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

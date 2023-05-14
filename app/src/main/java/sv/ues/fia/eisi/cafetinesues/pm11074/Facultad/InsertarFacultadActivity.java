@@ -15,7 +15,7 @@ import sv.ues.fia.eisi.cafetinesues.pm11074.Encargado.Encargado;
 public class InsertarFacultadActivity extends Activity {
 
     ControlBD helper;
-    EditText editId;
+
     EditText editNombre;
 
     @Override
@@ -23,17 +23,14 @@ public class InsertarFacultadActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_insertar_facultad);
         helper = new ControlBD(this);
-        editId = (EditText) findViewById(R.id.editId);
         editNombre = (EditText) findViewById(R.id.editNombre);
     }
 
     public void insertarFacultad(View v) {
-        String id = editId.getText().toString();
         String nombre = editNombre.getText().toString();
 
         String regInsertados;
         Facultad facultad = new Facultad();
-        facultad.setIdFacultad(id);
         facultad.setNomFacultad(nombre);
         helper.abrir();
         regInsertados = helper.insertar(facultad);
@@ -42,7 +39,6 @@ public class InsertarFacultadActivity extends Activity {
     }
 
     public void limpiarTexto(View v) {
-        editId.setText("");
         editNombre.setText("");
     }
 }

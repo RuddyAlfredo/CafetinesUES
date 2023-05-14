@@ -8,31 +8,40 @@
     tools:context=".pm11074.Local.ConsultarLocalActivity">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/idLocal"/>
+        android:id="@+id/idConsultarDiaClase"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:textAlignment="center"
+        android:text="@string/idConsultarLocal"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="9pt"
+        android:textStyle="bold"></TextView>
 
-    <EditText
-        android:id="@+id/editId"
-        android:layout_width="200dp"
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:inputType="text"
-        android:maxLength="2"/>
+        android:gravity="center"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/idLocal"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/nombre"/>
-
-    <EditText
-        android:id="@+id/editNomLocal"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:inputType="text"
-        android:maxLength="30"/>
+        <EditText
+            android:id="@+id/editId"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:maxLength="2"/>
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout1"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" >
         <Button
@@ -40,7 +49,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/consultar"
-            android:onClick="consultarLocal"/>
+            android:onClick="consultarLocal"
+            android:layout_marginRight="10dp"/>
         <Button
             android:id="@+id/botonLimpiar"
             android:layout_width="wrap_content"
@@ -52,6 +62,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
         android:text="@string/nombreEnc" />
 
     <EditText
@@ -68,6 +79,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
         android:text="@string/nombre" />
 
     <EditText
@@ -84,6 +96,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
         android:text="@string/opcionEsInterno" />
 
     <EditText

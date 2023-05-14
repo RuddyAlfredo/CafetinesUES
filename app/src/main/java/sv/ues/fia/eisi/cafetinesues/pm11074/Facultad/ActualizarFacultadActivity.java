@@ -38,6 +38,17 @@ public class ActualizarFacultadActivity extends Activity {
         Toast.makeText(this, estado, Toast.LENGTH_SHORT).show();
     }
 
+    public void consultarFacultad(View v) {
+        helper.abrir();
+        Facultad facultad = helper.consultarFacultad(editId.getText().toString());
+        helper.cerrar();
+        if(facultad == null)
+            Toast.makeText(this, "Facultad con Id " + editId.getText().toString() + " no encontrada", Toast.LENGTH_LONG).show();
+        else{
+            editNombre.setText(facultad.getNomFacultad());
+        }
+    }
+
     public void limpiarTexto(View v) {
         editId.setText("");
         editNombre.setText("");
