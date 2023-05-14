@@ -18,4 +18,6 @@
     <string name="idEncargado">Id de Encargado</string>
     <string name="opcionEsInterno">Es Interno</string>
     <string name="nombreEnc">Encargado</string>
+    <string name="idZona">Id de Zona</string>
+    <string name="nomZona">Nombre de Zona</string>
 </resources>

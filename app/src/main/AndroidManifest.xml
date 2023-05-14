@@ -30,6 +30,12 @@
         <activity android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Encargado.EliminarEncargadoActivity" />
         <activity android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Encargado.InsertarEncargadoActivity" />
         <activity android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Encargado.EncargadoMenuActivity" />
+
+        <activity android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Zona.ZonaMenuActivity" />
+        <activity android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Zona.InsertarZonaActivity" />
+        <activity android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Zona.ConsultaZonaActivity"/>
+        <activity android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Zona.EliminarZonaActivity"/>
+        <activity android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Zona.ActualizarZonaActivity"/>
         <activity
             android:name=".IniciarSesion"
             android:exported="true">

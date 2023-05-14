@@ -42,7 +42,7 @@ public class MainActivity extends ListActivity {
             "ql17001activities.horario.HorarioMenuActivity",
             "hr17016activities.salon.salonMenuActivity",
             "hr17016activities.tiposalon.tipoSalonMenuActivity",
-            "hr17016activities.tiposalon.tipoSalonMenuActivity",
+            "pm11074.Zona.ZonaMenuActivity",
             "hr17016activities.tiposalon.tipoSalonMenuActivity"
     };
 

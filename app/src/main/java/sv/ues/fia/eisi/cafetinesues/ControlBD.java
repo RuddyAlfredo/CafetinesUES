@@ -16,6 +16,7 @@ import sv.ues.fia.eisi.cafetinesues.Modelos.Usuario;
 import sv.ues.fia.eisi.cafetinesues.pm11074.Encargado.Encargado;
 import sv.ues.fia.eisi.cafetinesues.pm11074.Facultad.Facultad;
 import sv.ues.fia.eisi.cafetinesues.pm11074.Local.Local;
+import sv.ues.fia.eisi.cafetinesues.pm11074.Zona.Zona;
 
 public class ControlBD {
 
@@ -28,6 +29,7 @@ public class ControlBD {
     private static final String[] camposLocal = new String[] {"idLocal","idEncargado","nomLocal","esInterno"};
     private static final String[] camposFacultad = new String[] {"idFacultad","nomFacultad"};
 
+    private static final String[] camposZona = new String[] {"idZona","nomZona"};
 
 
 //---------------------------------------------------------------------------------
@@ -59,7 +61,8 @@ public class ControlBD {
                 db.execSQL("CREATE TABLE local( idLocal VARCHAR(2) PRIMARY KEY, idEncargado VARCHAR(2), nomLocal VARCHAR(30) NOT NULL, esInterno INTEGER, CONSTRAINT fk_encargado FOREIGN KEY(idEncargado) REFERENCES encargado(idEncargado) ON DELETE RESTRICT);");
                 db.execSQL("CREATE TABLE facultad( idFacultad VARCHAR(2) PRIMARY KEY, nomFacultad VARCHAR(30) NOT NULL);");
 
-
+                db.execSQL("CREATE TABLE zona ( idZona INTEGER PRIMARY KEY, nomZona VARCHAR(30) NOT NULL);");
+                db.execSQL("CREATE TABLE empleado( idEmpleado VARCHAR(5) PRIMARY KEY, idZona VARCHAR(2), idLocal VARCHAR(2), nomEmpleado VARCHAR(30) NOT NULL, CONSTRAINT fk_zona FOREIGN KEY(idZona) REFERENCES zona(idZona), CONSTRAINT fk_local FOREIGN KEY(idLocal) REFERENCES local(idLocal) ON DELETE RESTRICT);");
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -405,7 +408,66 @@ public class ControlBD {
         }
     }
 
+// ZONA ======
+    public ArrayList<Zona> consultarZona(){ // PM11074 =========
+        ArrayList<Zona> zonas = new ArrayList<>();
+        Cursor cursor =db.rawQuery("SELECT * FROM zona",null);
+        if(cursor.moveToFirst()){
+            do{
+                Zona zona = new Zona();
+                zona.setIdZona(cursor.getInt(0));
+                zona.setNomZona(cursor.getString(1));
+                zonas.add(zona);
+            }while(cursor.moveToNext());
+        }
+        return zonas;
+    }
 
+    public String insertar(Zona zona){ // PM11074 ========
+        String regInsertados = "Registro Insertado Nº= ";
+        long contador = 0;
+
+        ContentValues zon = new ContentValues();
+        zon.put("nomZona", zona.getNomZona());
+
+        contador = db.insert("zona", null, zon);
+
+        if(contador == -1 || contador == 0) {
+            regInsertados = "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
+        }
+        else {
+            regInsertados = regInsertados + contador;
+        }
+        return regInsertados;
+    }
+
+ public String eliminarZona(Zona zona){
+        String regAfectados="filas afectadas= ";
+        int contador=0;
+        if(zona.getIdZona()!=-1){
+            contador+=db.delete("zona", "idZona='"+zona.getIdZona()+"'", null);
+            regAfectados+=contador;
+            return regAfectados;
+        }else if(zona.getNomZona()!=null){
+            contador+=db.delete("zona", "nomZona='"+zona.getNomZona()+"'", null);
+            regAfectados+=contador;
+            return regAfectados;
+        }
+
+        return regAfectados+"Registro no encontrado.";
+ }
+
+    public String actualizarZona(Zona zona){
+            String[] id = {zona.getIdZona()+""};
+            ContentValues cv = new ContentValues();
+            cv.put("idZona", zona.getIdZona());
+            cv.put("nomZona", zona.getNomZona());
+         if(db.update("zona", cv, "idZona = ?", id)>0){
+            return "Registro Actualizado Correctamente";
+        }else{
+            return "Registro con id " + zona.getIdZona() + " no existe";
+        }
+    }
 
 
 
