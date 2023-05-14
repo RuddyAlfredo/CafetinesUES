@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".pm11074.Zona.EliminarZonaActivity">
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <TableRow>
+
+        <TextView
+            android:layout_width="195dp"
+            android:text="@string/idZona" />
+
+        <EditText
+            android:id="@+id/deleteIdZona"
+            android:layout_width="171dp"
+            android:inputType="text" />
+    </TableRow>
+    <TableRow>
+        <TextView android:text="@string/nomZona" />
+
+        <EditText
+            android:id="@+id/deleteNombreZona"
+            android:layout_width="196dp"
+            android:inputType="text"
+            android:maxLength="50" />
+    </TableRow>
+
+
+    <TableRow>
+        <Button
+            android:onClick="eliminarZona"
+            android:text="Eliminar" />
+    </TableRow>
+
+
+
+</TableLayout>
