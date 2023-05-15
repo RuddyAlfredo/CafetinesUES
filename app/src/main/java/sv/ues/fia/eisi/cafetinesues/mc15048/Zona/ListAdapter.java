@@ -1,19 +1,20 @@
-package sv.ues.fia.eisi.cafetinesues.pm11074.Zona;
+package sv.ues.fia.eisi.cafetinesues.mc15048.Zona;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Filter;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.io.Console;
 import java.util.ArrayList;
 
+import sv.ues.fia.eisi.cafetinesues.ControlBD;
 import sv.ues.fia.eisi.cafetinesues.R;
 
 public class ListAdapter extends ArrayAdapter<Zona> {

@@ -5,23 +5,22 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
-    tools:context=".mc15048.Zona.ConsultaZonaActivity">
+    tools:context=".mc15048.Empleado.EmpleadoMenuActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Consultar Zona"
+        android:text="Consultar Empleado"
         android:textSize="32sp"/>
 
     <EditText
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/Search"
+        android:id="@+id/SearchEmpleado"
         android:hint="buscar"/>
 
-
     <ListView
-        android:id="@+id/listViewZonas"
+        android:id="@+id/listViewEmpleados"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

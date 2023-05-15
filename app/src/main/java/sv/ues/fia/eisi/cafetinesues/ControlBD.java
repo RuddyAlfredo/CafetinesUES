@@ -6,17 +6,17 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import sv.ues.fia.eisi.cafetinesues.Modelos.AccesoUsuario;
 import sv.ues.fia.eisi.cafetinesues.Modelos.OpcionCRUD;
 import sv.ues.fia.eisi.cafetinesues.Modelos.Usuario;
+import sv.ues.fia.eisi.cafetinesues.mc15048.Empleado.Empleado;
 import sv.ues.fia.eisi.cafetinesues.pm11074.Encargado.Encargado;
 import sv.ues.fia.eisi.cafetinesues.pm11074.Facultad.Facultad;
 import sv.ues.fia.eisi.cafetinesues.pm11074.Local.Local;
-import sv.ues.fia.eisi.cafetinesues.pm11074.Zona.Zona;
+import sv.ues.fia.eisi.cafetinesues.mc15048.Zona.Zona;
 
 public class ControlBD {
 
@@ -30,6 +30,7 @@ public class ControlBD {
     private static final String[] camposFacultad = new String[] {"idFacultad","nomFacultad"};
 
     private static final String[] camposZona = new String[] {"idZona","nomZona"};
+    private static final String[] camposEmpleado = new String[] {"idEmpleado","idZona","idLocal","nomEmpleado"};
 
 
 //---------------------------------------------------------------------------------
@@ -62,7 +63,7 @@ public class ControlBD {
                 db.execSQL("CREATE TABLE facultad( idFacultad VARCHAR(2) PRIMARY KEY, nomFacultad VARCHAR(30) NOT NULL);");
 
                 db.execSQL("CREATE TABLE zona ( idZona INTEGER PRIMARY KEY, nomZona VARCHAR(30) NOT NULL);");
-                db.execSQL("CREATE TABLE empleado( idEmpleado VARCHAR(5) PRIMARY KEY, idZona VARCHAR(2), idLocal VARCHAR(2), nomEmpleado VARCHAR(30) NOT NULL, CONSTRAINT fk_zona FOREIGN KEY(idZona) REFERENCES zona(idZona), CONSTRAINT fk_local FOREIGN KEY(idLocal) REFERENCES local(idLocal) ON DELETE RESTRICT);");
+                db.execSQL("CREATE TABLE empleado( idEmpleado INTEGER PRIMARY KEY, idZona INTEGER, idLocal VARCHAR(2), nomEmpleado VARCHAR(100) NOT NULL, apEmpleado VARCHAR (100), CONSTRAINT fk_zona FOREIGN KEY(idZona) REFERENCES zona(idZona), CONSTRAINT fk_local FOREIGN KEY(idLocal) REFERENCES local(idLocal) ON DELETE RESTRICT);");
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -122,25 +123,28 @@ public class ControlBD {
 
     // VALORES PARA OPCIONCRUD---------( POR AHORA SON 22)------------------------------
         final String[] valIdOpcion = {
-                "001","002","003","004","005","006","007","008", // ID's para opciones de gestionar (se reserva desde el 001 hasta el 020)
+                "001","002","003","004","005","006","007","008","009", // ID's para opciones de gestionar (se reserva desde el 001 hasta el 020)
                 "021","022","023","024", // ID's para las opciones del CRUD de Encargado.
                 "025","026","027","028", // ID's para las opciones del CRUD de Local.
                 "029","030","031","032", // ID's para las opciones del CRUD de Facultad.
                 "033","034","035","036", // ID's para las opciones del CRUD de Pedido.
                 "037","038","039","040", // ID's para las opciones del CRUD de ZONA.
                 "041","042","043","044", // ID's para las opciones del CRUD de Producto.
+                "045","046","047","048", // ID's para las opciones del CRUD de Empleados.
         };
         final String[] valDesOpcion = {
-                "Gestionar Encargados","Gestionar Locales","Gestionar Facultades","Gestionar Pedido","Gestionar Combo","Gestionar Combo/Producto","Gestionar Zona","Gestionar Producto",
+                "Gestionar Encargados","Gestionar Locales","Gestionar Facultades","Gestionar Pedido","Gestionar Combo","Gestionar Combo/Producto","Gestionar Zona","Gestionar Producto","Gestionar Empleados",
                 "Insertar Encargado","Consultar Encargado","Borrar Encargado","Actualizar Encargado", //CRUD Encargados.
                 "Insertar Local","Consultar Local","Borrar Local","Actualizar Local", //CRUD Locales.
                 "Insertar Facultad","Consultar Facultad","Borrar Facultad","Actualizar Facultad", //CRUD ingredientes.
                 "Insertar Pedido", "Consultar Pedido","Eliminar Pedido","Actualizar Pedido", // CRUD Pedidos.
                 "Insertar Zona", "Consultar Zona","Eliminar Zona","Actualizar Zona", // CRUD Zona.
-                "Insertar Producto", "Consultar Producto","Eliminar Producto","Actualizar Producto" // CRUD Producto.
+                "Insertar Producto", "Consultar Producto","Eliminar Producto","Actualizar Producto", // CRUD Producto.
+                "Insertar Empleado", "Consultar Empleado","Eliminar Empleado","Actualizar Empleado", // CRUD Empleado.
         };
         final int[] valNumCrud = {
-                0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0,
+                1, 2, 3, 4,
                 1, 2, 3, 4,
                 1, 2, 3, 4,
                 1, 2, 3, 4,
@@ -151,12 +155,12 @@ public class ControlBD {
 
     // VALORES PARA ACCESOUSUARIO-------( POR AHORA SON 26)----------------------------
         final String[] valAccesoIdUsuario = {
-                "01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01",// ID del Admin (22 veces)
+                "01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01","01",// ID del Admin (22 veces)
                 "02","02","02","02",  // ID del cliente1 3 veces pues solo le permitimos 3 opciones
                 "03","03","03","03","03"    // ID del encargado1 (para ejemplo solo le permitimos crear y consultar INGREDIENTE)
         };
         final String[] valAccesoIdOpcion = {                // El admin tiene acceso a todo (las 22 opciones hasta ahora)
-                "001","002","003","004","005","006","007","008","021","022","023","024","025","026","027","028","029","030","031","032","033","034","035","036","037","038","039","040","041","042","043","044",
+                "001","002","003","004","005","006","007","008","009","021","022","023","024","025","026","027","028","029","030","031","032","033","034","035","036","037","038","039","040","041","042","043","044","045","046","047","048",
                 "004","033","034","036",  // El cliente puede ver el la gestion de Pedido y solo crear/consultar (por eso 3 opciones)
                 "002","025","026","027","028"  // El encargado 1 puede ver el la gestion de Productos y solo crear/consultar (por eso 3 opciones)
         };
@@ -194,8 +198,18 @@ public class ControlBD {
             insertar(au);
         }
 
-
-
+        //Datos iniciales de Zona
+        db.execSQL("INSERT INTO zona VALUES('1','Sur')");
+        db.execSQL("INSERT INTO zona VALUES('2','Norte')");
+        db.execSQL("INSERT INTO zona VALUES('3','Este')");
+        db.execSQL("INSERT INTO zona VALUES('4','Oeste')");
+        db.execSQL("INSERT INTO zona VALUES('5','Noreste')");
+        //Datos iniciales de Empleado
+        db.execSQL("INSERT INTO empleado VALUES('1','Juan','Perez','1','1')");
+        db.execSQL("INSERT INTO empleado VALUES('2','Maria','Lopez','2','2')");
+        db.execSQL("INSERT INTO empleado VALUES('3','Pedro','Gonzalez','3','3')");
+        db.execSQL("INSERT INTO empleado VALUES('4','Jose','Rodriguez','4','4')");
+        db.execSQL("INSERT INTO empleado VALUES('5','Ana','Garcia','1','1')");
 
         cerrar();
 
@@ -468,9 +482,88 @@ public class ControlBD {
             return "Registro con id " + zona.getIdZona() + " no existe";
         }
     }
+//EMPLEADOS
+    public String insertar(Empleado empleado){ // PM11074 ========
+        String regInsertados = "Registro Insertado Nº= ";
+        long contador = 0;
+
+        ContentValues emp = new ContentValues();
+        emp.put("idEmpleado", empleado.getIdEmpleado());
+        emp.put("nomEmpleado", empleado.getNombreEmpleado());
+        emp.put("apEmpleado", empleado.getApeEmpleado());
+        emp.put("idLocal", empleado.getIdLocal());
+        emp.put("idZona", empleado.getIdZona());
 
 
+        contador = db.insert("empleado", null, emp);
 
+        if(contador == -1 || contador == 0) {
+            regInsertados = "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
+        }
+        else {
+            regInsertados = regInsertados + contador;
+        }
+        return regInsertados;
+    }
+
+    public String eliminarEmpleado(Empleado empleado){
+        String regAfectados="filas afectadas= ";
+        int contador=0;
+        if(empleado.getIdEmpleado()!=-1){
+            contador+=db.delete("empleado", "idEmpleado='"+empleado.getIdEmpleado()+"'", null);
+            regAfectados+=contador;
+            return regAfectados;
+        }
+
+        return regAfectados+"Registro no encontrado.";
+    }
+
+    public String actualizarEmpleado(Empleado empleado){
+            String[] id = {empleado.getIdEmpleado()+""};
+            ContentValues cv = new ContentValues();
+            cv.put("idEmpleado", empleado.getIdEmpleado());
+            cv.put("nomEmpleado", empleado.getNombreEmpleado());
+            cv.put("apEmpleado", empleado.getApeEmpleado());
+            cv.put("idLocal", empleado.getIdLocal());
+            cv.put("idZona", empleado.getIdZona());
+         if(db.update("empleado", cv, "idEmpleado = ?", id)>0){
+            return "Registro Actualizado Correctamente";
+        }else{
+            return "Registro con id " + empleado.getIdEmpleado() + " no existe";
+        }
+    }
+
+    public ArrayList<Empleado> consultarEmpleado(){ // PM11074 =========
+        ArrayList<Empleado> empleados = new ArrayList<>();
+        Cursor cursor =db.rawQuery("SELECT * FROM empleado",null);
+        if(cursor.moveToFirst()){
+            do{
+                Empleado empleado = new Empleado();
+                empleado.setIdEmpleado(cursor.getInt(0));
+                empleado.setNombreEmpleado(cursor.getString(1));
+                empleado.setApeEmpleado(cursor.getString(2));
+                empleado.setIdLocal(cursor.getString(3));
+                empleado.setIdZona(cursor.getInt(4));
+                empleados.add(empleado);
+            }while(cursor.moveToNext());
+        }
+        return empleados;
+    }
+    public Empleado obtenerEmpleado(String idEmpleado){
+        Empleado empleado = new Empleado();
+        String[] id = {idEmpleado};
+        Cursor cursor = db.query("empleado", camposEmpleado, "idEmpleado = ?", id, null, null, null);
+        if(cursor.moveToFirst()){
+            empleado.setIdEmpleado(cursor.getInt(0));
+            empleado.setNombreEmpleado(cursor.getString(1));
+            empleado.setApeEmpleado(cursor.getString(2));
+            empleado.setIdLocal(cursor.getString(3));
+            empleado.setIdZona(cursor.getInt(4));
+        }
+        else
+            empleado = null;
+        return empleado;
+    }
 
 
 

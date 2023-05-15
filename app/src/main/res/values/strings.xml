@@ -20,4 +20,6 @@
     <string name="nombreEnc">Encargado</string>
     <string name="idZona">Id de Zona</string>
     <string name="nomZona">Nombre de Zona</string>
+    <string name="apellido">Apellido</string>
+    <string name="idEmpleado">Id de empleado</string>
 </resources>

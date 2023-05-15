@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="30dip"
+    android:stretchColumns="1"
+    tools:context=".mc15048.Empleado.InsertarEmpleadoActivity">
+
+    <TableRow>
+        <TextView android:text="@string/nombre"/>
+        <EditText
+            android:id="@+id/textNombreEmpleado"
+            android:inputType="text"
+            android:maxLength="50" />
+    </TableRow>
+    <TableRow>
+        <TextView android:text="@string/apellido" />
+        <EditText
+            android:id="@+id/textApellidoEmpleado"
+            android:inputType="text"
+            android:maxLength="50" />
+    </TableRow>
+    <TableRow>
+        <TextView android:text="@string/idLocal" />
+        <EditText
+            android:id="@+id/textLocalEmpleado"
+            android:inputType="text"
+            android:maxLength="2" />
+    </TableRow>
+    <TableRow>
+        <TextView android:text="@string/idZona" />
+        <EditText
+            android:id="@+id/textZonaEmpleado"
+            android:inputType="number"/>
+    </TableRow>
+
+    <TableRow>
+        <Button
+            android:onClick="insertarEmpleado"
+            android:text="@string/insertar" />
+        <Button
+            android:onClick="limpiarTexto"
+            android:text="@string/limpiar" />
+
+    </TableRow>
+
+</TableLayout>

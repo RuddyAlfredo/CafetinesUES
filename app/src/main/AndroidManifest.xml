@@ -31,11 +31,17 @@
         <activity android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Encargado.InsertarEncargadoActivity" />
         <activity android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Encargado.EncargadoMenuActivity" />
 
-        <activity android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Zona.ZonaMenuActivity" />
-        <activity android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Zona.InsertarZonaActivity" />
-        <activity android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Zona.ConsultaZonaActivity"/>
-        <activity android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Zona.EliminarZonaActivity"/>
-        <activity android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Zona.ActualizarZonaActivity"/>
+        <activity android:name="sv.ues.fia.eisi.cafetinesues.mc15048.Zona.ZonaMenuActivity" />
+        <activity android:name="sv.ues.fia.eisi.cafetinesues.mc15048.Zona.InsertarZonaActivity" />
+        <activity android:name="sv.ues.fia.eisi.cafetinesues.mc15048.Zona.ConsultaZonaActivity"/>
+        <activity android:name="sv.ues.fia.eisi.cafetinesues.mc15048.Zona.EliminarZonaActivity"/>
+        <activity android:name="sv.ues.fia.eisi.cafetinesues.mc15048.Zona.ActualizarZonaActivity"/>
+
+        <activity android:name="sv.ues.fia.eisi.cafetinesues.mc15048.Empleado.EmpleadoMenuActivity" />
+        <activity android:name="sv.ues.fia.eisi.cafetinesues.mc15048.Empleado.InsertarEmpleadoActivity" />
+        <activity android:name="sv.ues.fia.eisi.cafetinesues.mc15048.Empleado.ConsultarEmpleadoActivity" />
+        <activity android:name="sv.ues.fia.eisi.cafetinesues.mc15048.Empleado.EliminarEmpleadoActivity" />
+        <activity android:name="sv.ues.fia.eisi.cafetinesues.mc15048.Empleado.ActualizarEmpleadoActivity" />
         <activity
             android:name=".IniciarSesion"
             android:exported="true">

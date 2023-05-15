@@ -2,30 +2,26 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".mc15048.Zona.ConsultaZonaActivity">
+    tools:context=".mc15048.Empleado.EliminarEmpleadoActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Consultar Zona"
-        android:textSize="32sp"/>
+        android:text="@string/identificador" />
 
     <EditText
+        android:id="@+id/IdEmpleado"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/Search"
-        android:hint="buscar"/>
+        android:inputType="number"/>
 
-
-    <ListView
-        android:id="@+id/listViewZonas"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-
-
-
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/eliminar"
+        android:onClick="eliminarEmpleado"/>
 
 </LinearLayout>

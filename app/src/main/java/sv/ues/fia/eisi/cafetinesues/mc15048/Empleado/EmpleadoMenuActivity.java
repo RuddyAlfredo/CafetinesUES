@@ -1,29 +1,26 @@
-package sv.ues.fia.eisi.cafetinesues.pm11074.Zona;
+package sv.ues.fia.eisi.cafetinesues.mc15048.Empleado;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import sv.ues.fia.eisi.cafetinesues.ControlBD;
-import sv.ues.fia.eisi.cafetinesues.R;
 
 
-public class ZonaMenuActivity extends ListActivity{
+public class EmpleadoMenuActivity extends ListActivity{
     SharedPreferences prf;
     ArrayList<String> menu = new ArrayList(); // menu a llenar con las opciones permitidas
 
-    int[] idsPermisos = {37,38,39,40};// IDS de los permisos
-    String[] opcionesDisponibles = {"Insertar Zona","Consultar Zona","Borrar Zona","Actualizar Zona"};
+    int[] idsPermisos = {21,22,23,24};// IDS de los permisos
+    String[] opcionesDisponibles = {"Insertar Empleado","Consultar Empleado","Borrar Empleado","Actualizar Empleado"};
 
     ArrayList<String> menuActivities = new ArrayList<String>(); // menu a llenar con las activities permitidas.
-    String[] activities = {"InsertarZonaActivity","ConsultaZonaActivity","EliminarZonaActivity", "ActualizarZonaActivity"};
+    String[] activities = {"InsertarEmpleadoActivity","ConsultarEmpleadoActivity","EliminarEmpleadoActivity", "ActualizarEmpleadoActivity"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +35,7 @@ public class ZonaMenuActivity extends ListActivity{
         String nombreValue = menuActivities.get(position);
 
         try{
-            Class<?> clase=Class.forName("sv.ues.fia.eisi.cafetinesues.pm11074.Zona."+nombreValue);
+            Class<?> clase=Class.forName("sv.ues.fia.eisi.cafetinesues.mc15048.Empleado."+nombreValue);
             Intent inte = new Intent(this,clase);
             this.startActivity(inte);
         }catch(ClassNotFoundException e){
