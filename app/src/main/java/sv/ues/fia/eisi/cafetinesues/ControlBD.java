@@ -39,6 +39,14 @@ public class ControlBD {
     private DatabaseHelper DBHelper;
     private SQLiteDatabase db;
 
+    final String[] permisosCliente = {
+            "004","033","034","036",
+    };
+
+    final String[] permisosEncargado = {
+            "002","003","004","025","026","027","028","030","034"
+    };
+
     public ControlBD (Context ctx) {
         this.context = ctx;
         DBHelper = new DatabaseHelper(context);
@@ -54,13 +62,13 @@ public class ControlBD {
         @Override
         public void onCreate(SQLiteDatabase db) {
             try {
-                db.execSQL("CREATE TABLE usuario( idUsuario VARCHAR(2) PRIMARY KEY, nomUsuario VARCHAR(30), clave VARCHAR(5));");
-                db.execSQL("CREATE TABLE opcionCrud(idOpcion VARCHAR(3), desOpcion VARCHAR(30), numCrud INTEGER);");
+                db.execSQL("CREATE TABLE usuario( idUsuario VARCHAR(2) PRIMARY KEY, nomUsuario VARCHAR(50), clave VARCHAR(5));");
+                db.execSQL("CREATE TABLE opcionCrud(idOpcion VARCHAR(3), desOpcion VARCHAR(50), numCrud INTEGER);");
                 db.execSQL("CREATE TABLE accesoUsuario( idUsuario VARCHAR(2), idOpcion VARCHAR(3), PRIMARY KEY(idUsuario, idOpcion),CONSTRAINT fk_usuario FOREIGN KEY(idUsuario) REFERENCES usuario(idUsuario),CONSTRAINT fk_opcion FOREIGN KEY(idOpcion) REFERENCES opcionCrud(idOpcion));");
 
-                db.execSQL("CREATE TABLE encargado( idEncargado VARCHAR(2) PRIMARY KEY, nomEncargado VARCHAR(30) NOT NULL);");
-                db.execSQL("CREATE TABLE local( idLocal VARCHAR(2) PRIMARY KEY, idEncargado VARCHAR(2), nomLocal VARCHAR(30) NOT NULL, esInterno INTEGER, CONSTRAINT fk_encargado FOREIGN KEY(idEncargado) REFERENCES encargado(idEncargado) ON DELETE RESTRICT);");
-                db.execSQL("CREATE TABLE facultad( idFacultad VARCHAR(2) PRIMARY KEY, nomFacultad VARCHAR(30) NOT NULL);");
+                db.execSQL("CREATE TABLE encargado( idEncargado INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, nomEncargado VARCHAR(50) NOT NULL);");
+                db.execSQL("CREATE TABLE local( idLocal INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, idEncargado INTEGER, nomLocal VARCHAR(50) NOT NULL, esInterno INTEGER, CONSTRAINT fk_encargado FOREIGN KEY(idEncargado) REFERENCES encargado(idEncargado) ON DELETE RESTRICT);");
+                db.execSQL("CREATE TABLE facultad( idFacultad INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, nomFacultad VARCHAR(50) NOT NULL);");
 
                 db.execSQL("CREATE TABLE zona ( idZona INTEGER PRIMARY KEY, nomZona VARCHAR(30) NOT NULL);");
                 db.execSQL("CREATE TABLE empleado( idEmpleado INTEGER PRIMARY KEY, idZona INTEGER, idLocal VARCHAR(2), nomEmpleado VARCHAR(100) NOT NULL, apEmpleado VARCHAR (100), CONSTRAINT fk_zona FOREIGN KEY(idZona) REFERENCES zona(idZona), CONSTRAINT fk_local FOREIGN KEY(idLocal) REFERENCES local(idLocal) ON DELETE RESTRICT);");
@@ -165,6 +173,10 @@ public class ControlBD {
                 "002","025","026","027","028"  // El encargado 1 puede ver el la gestion de Productos y solo crear/consultar (por eso 3 opciones)
         };
 
+
+
+
+
 // TODO Poner las demás tablas
 
 
@@ -173,7 +185,21 @@ public class ControlBD {
         db.execSQL("DELETE FROM opcionCrud");
         db.execSQL("DELETE FROM accesoUsuario");
 
+        db.execSQL("INSERT INTO encargado VALUES (1,'José Antonio');");
+        db.execSQL("INSERT INTO encargado VALUES (2,'Andrew Steve');");
+        db.execSQL("INSERT INTO encargado VALUES (3,'Juan Pérez');");
+        db.execSQL("INSERT INTO encargado VALUES (4,'John Doe');");
+        db.execSQL("INSERT INTO encargado VALUES (5,'Carlos Alberto');");
 
+        db.execSQL("INSERT INTO local VALUES (1,1,'El Buen Sabor',1);");
+        db.execSQL("INSERT INTO local VALUES (2,2,'Tacos del Pastor',1);");
+        db.execSQL("INSERT INTO local VALUES (3,3,'La Cocina de la Abuela',0);");
+        db.execSQL("INSERT INTO local VALUES (4,4,'Las Carnitas',0);");
+
+        db.execSQL("INSERT INTO facultad VALUES (1,'Ingeniería y Arquitectura');");
+        db.execSQL("INSERT INTO facultad VALUES (2,'Ciencias y Humanidades');");
+        db.execSQL("INSERT INTO facultad VALUES (3,'Jurisprudencia');");
+        db.execSQL("INSERT INTO facultad VALUES (4,'Odontología');");
 
         Usuario usuario = new Usuario();
         for(int i = 0; i < valIdUsuario.length; i++){
@@ -218,7 +244,7 @@ public class ControlBD {
 //   ENCARGADO ======
     public String insertar(Encargado encargado){ // PM11074 =========
         String regInsertados="Registro Insertado Nº= ";
-        long contador=0;
+        long contador = 0;
         
         ContentValues encar = new ContentValues();
         encar.put("idEncargado", encargado.getIdEncargado());
@@ -231,6 +257,19 @@ public class ControlBD {
         }
         else {
             regInsertados = regInsertados + contador;
+
+            Usuario usuario = new Usuario(); // Creandole el usuario al Encargado recien creaado
+            usuario.setIdUsuario(String.valueOf(contador));
+            usuario.setNomUsuario(encargado.getNomEncargado());
+            usuario.setClave("12345");
+            insertar(usuario);
+
+            for (int i = 0; i < permisosEncargado.length; i++) {
+                AccesoUsuario au = new AccesoUsuario(); // Dandole los permisos
+                au.setIdUsuario(String.valueOf(contador));
+                au.setIdOpcion(permisosEncargado[i]);
+                insertar(au);
+            }
         }
         return regInsertados;
     }
@@ -249,13 +288,25 @@ public class ControlBD {
         }
     }
 
+    public ArrayList<String>  getAllEncargados(){ // PM11074 =========
+        ArrayList<String> encs = new ArrayList<String>();
+        Cursor cursor = db.query("encargado", camposEncargado, null, null, null, null, null);
+        if(cursor.moveToFirst()){
+            encs.add("-- Seleccione Encargado --");  //  Primer elemento de la lsita siempre será el mensaje que debe elegir el encargado
+            encs.add(cursor.getString(0) + " - " + cursor.getString(1));
+            while (cursor.moveToNext()){
+                encs.add(cursor.getString(0) + " - " + cursor.getString(1));
+            }
+        }else
+            encs.add("-- No Hay Encargados --");
+
+        return encs;
+    }
+
     public String eliminar(Encargado encargado){  // PM11074 =========
         String regAfectados="El registro no existe";
         int contador=0;
 
-       /* if (verificarIntegridad(encargado,1)) {
-            contador += db.delete("local", "idEncargado='"+encargado.getIdEncargado()+"'", null);
-        }*/
         if (verificarIntegridad(encargado,1)) {
             contador += db.delete("encargado", "idEncargado='" + encargado.getIdEncargado() + "'", null);
             regAfectados = "filas afectadas = " + contador;
@@ -267,12 +318,11 @@ public class ControlBD {
         if(verificarIntegridad(encargado, 1)){
             String[] id = {encargado.getIdEncargado()};
             ContentValues cv = new ContentValues();
-            cv.put("idEncargado", encargado.getIdEncargado());
             cv.put("nomEncargado", encargado.getNomEncargado());
             db.update("encargado", cv, "idEncargado = ?", id);
             return "Registro Actualizado Correctamente";
         }else{
-            return "Registro con carnet " + encargado.getIdEncargado() + " no existe";
+            return "Encargado con Id: " + encargado.getIdEncargado() + " no existe";
         }
     }
 
@@ -282,7 +332,6 @@ public class ControlBD {
         long contador=0;
 
         ContentValues loc = new ContentValues();
-        loc.put("idLocal", local.getIdLocal());
         loc.put("idEncargado", local.getIdEncargado());
         loc.put("nomLocal", local.getNomLocal());
         loc.put("esInterno", local.getEsInterno());
@@ -303,10 +352,9 @@ public class ControlBD {
             return "El encargado con Id: " + local.getIdEncargado() +" NO existe";
     }
 
-    public Local consultarLocal(String idLoc, String nomLoc){ // PM11074 =========
-
-        String[] id = {idLoc, nomLoc};
-        Cursor cursor = db.query("local", camposLocal, "idLocal = ? AND LOWER(nomLocal) = LOWER(?)", id, null, null, null);
+    public Local consultarLocal(String idLoc) { // PM11074 =========
+        String[] id = {idLoc};
+        Cursor cursor = db.query("local", camposLocal, "idLocal = ?", id, null, null, null);
 
         if(cursor.moveToFirst()){
             Local local = new Local();
@@ -423,7 +471,7 @@ public class ControlBD {
     }
 
 // ZONA ======
-    public ArrayList<Zona> consultarZona(){ // PM11074 =========
+    public ArrayList<Zona> consultarZona(){
         ArrayList<Zona> zonas = new ArrayList<>();
         Cursor cursor =db.rawQuery("SELECT * FROM zona",null);
         if(cursor.moveToFirst()){
@@ -437,7 +485,7 @@ public class ControlBD {
         return zonas;
     }
 
-    public String insertar(Zona zona){ // PM11074 ========
+    public String insertar(Zona zona){
         String regInsertados = "Registro Insertado Nº= ";
         long contador = 0;
 

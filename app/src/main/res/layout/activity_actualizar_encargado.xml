@@ -8,31 +8,68 @@
     android:stretchColumns="1"
     tools:context=".pm11074.Encargado.ActualizarEncargadoActivity">
 
-    <TableRow>
-        <TextView android:text="@string/identificador" />
-        <EditText
-            android:id="@+id/editId"
-            android:inputType="text"
-            android:maxLength="2" />
-    </TableRow>
-    <TableRow>
-        <TextView android:text="@string/nombre" />
-        <EditText
-            android:id="@+id/editNombre"
-            android:inputType="text"
-            android:maxLength="30" />
-    </TableRow>
+    <TextView
+        android:id="@+id/idConsultarDiaClase"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:textAlignment="center"
+        android:text="@string/idActualizarEncargado"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="9pt"
+        android:textStyle="bold"></TextView>
 
-    <TableRow>
-        <Button
-            android:onClick="actualizarEncargado"
-            android:text="@string/actualizar" />
-    </TableRow>
+    <TableLayout>
+        <TableRow android:layout_marginBottom="5dp">
 
-    <TableRow>
-        <Button
-            android:onClick="limpiarTexto"
-            android:text="@string/limpiar" />
-    </TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:textAlignment="center"
+                android:text="@string/identificador" />
+            <EditText
+                android:id="@+id/editId"
+                android:inputType="number"
+                android:layout_marginRight="5dp"
+                android:maxLength="2" />
+            <Button
+                android:id="@+id/botonConsultar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/consultar"
+                android:onClick="consultarEncargado"
+                android:layout_marginRight="10dp"/>
+        </TableRow>
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:textAlignment="center"
+                android:text="@string/nombre" />
+
+            <EditText
+                android:id="@+id/editNombre"
+                android:layout_width="186dp"
+                android:inputType="text"
+                android:maxLength="30" />
+
+        </TableRow>
+    </TableLayout>
+
+    <TableLayout
+        android:layout_marginTop="30dp">
+        <TableRow
+            android:gravity="center">
+
+            <Button
+                android:layout_marginRight="20dp"
+                android:onClick="actualizarEncargado"
+                android:text="@string/actualizar" />
+
+            <Button
+                android:onClick="limpiarTexto"
+                android:text="@string/limpiar" />
+        </TableRow>
+    </TableLayout>
 
 </TableLayout>

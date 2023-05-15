@@ -19,7 +19,6 @@ public class ConsultarLocalActivity extends Activity {
     EditText editIdEnc;
     EditText editNombre;
     EditText checkEsInterno;
-    EditText editNomLocal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,12 +30,12 @@ public class ConsultarLocalActivity extends Activity {
         editNombre = (EditText) findViewById(R.id.editNombre);
         checkEsInterno = (EditText) findViewById(R.id.checkEsInterno);
 
-        editNomLocal = (EditText) findViewById(R.id.editNomLocal);
+
     }
 
     public void consultarLocal(View v) {
         helper.abrir();
-        Local local = helper.consultarLocal(editId.getText().toString(), editNomLocal.getText().toString());
+        Local local = helper.consultarLocal(editId.getText().toString());
         helper.cerrar();
         if(local == null)
             Toast.makeText(this, "Local con Id " + editId.getText().toString() + " no encontrado", Toast.LENGTH_LONG).show();

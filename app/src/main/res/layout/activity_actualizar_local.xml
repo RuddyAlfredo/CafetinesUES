@@ -8,47 +8,99 @@
     android:stretchColumns="1"
     tools:context=".pm11074.Local.ActualizarLocalActivity">
 
-    <TableRow>
-        <TextView android:text="@string/idLocal" />
-        <EditText
-            android:id="@+id/editId"
-            android:inputType="text"
-            android:maxLength="2" />
-    </TableRow>
-    <TableRow>
-        <TextView android:text="@string/idEncargado" />
-        <EditText
-            android:id="@+id/editIdEnc"
-            android:inputType="text"
-            android:maxLength="2" />
-    </TableRow>
-    <TableRow>
-        <TextView android:text="@string/nombre" />
-        <EditText
-            android:id="@+id/editNombre"
-            android:inputType="text"
-            android:maxLength="30" />
-    </TableRow>
+    <TextView
+        android:id="@+id/idConsultarDiaClase"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:textAlignment="center"
+        android:text="@string/idActualizarLocal"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="9pt"
+        android:textStyle="bold"></TextView>
 
-    <TableRow>
-        <TextView
-            android:layout_gravity="center|left"
-            android:text="@string/opcionEsInterno" />
-        <CheckBox
-            android:id="@+id/checkEsInterno"
-            android:layout_gravity="left" />
-    </TableRow>
+    <TableLayout>
+        <TableRow android:layout_marginBottom="5dp">
 
-    <TableRow>
-        <Button
-            android:onClick="actualizarLocal"
-            android:text="@string/actualizar" />
-    </TableRow>
+            <TextView
+                android:layout_width="98dp"
+                android:layout_marginLeft="5dp"
+                android:text="@string/identificador"
+                android:textAlignment="center" />
 
-    <TableRow>
-        <Button
-            android:onClick="limpiarTexto"
-            android:text="@string/limpiar" />
-    </TableRow>
+            <EditText
+                android:id="@+id/editId"
+                android:layout_width="143dp"
+                android:layout_marginRight="5dp"
+                android:inputType="number"
+                android:maxLength="2" />
+            <Button
+                android:id="@+id/botonConsultar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/consultar"
+                android:onClick="consultarLocal"
+                android:layout_marginRight="10dp"/>
+        </TableRow>
+    </TableLayout>
+
+    <TableLayout android:layout_marginLeft="5dp">
+        <TableRow>
+            <TextView android:text="@string/encargadoActual" />
+
+            <EditText
+                android:id="@+id/editIdEncActual"
+                android:layout_width="275dp"
+                android:layout_height="wrap_content"
+                android:cursorVisible="false"
+                android:enabled="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:inputType="text"
+                android:longClickable="false" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:text="@string/encargadoNuevo"
+                android:layout_marginTop="15dp"/>
+
+            <Spinner
+                android:id="@+id/editIdEncSpinner"
+                android:minHeight="25dp"
+                android:layout_marginTop="15dp"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" />
+        </TableRow>
+        <TableRow>
+            <TextView android:text="@string/nombre" />
+            <EditText
+                android:id="@+id/editNombre"
+                android:inputType="text"
+                android:maxLength="30" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_gravity="center|left"
+                android:text="@string/opcionEsInterno" />
+            <CheckBox
+                android:id="@+id/checkEsInterno"
+                android:layout_gravity="left" />
+        </TableRow>
+    </TableLayout>
+
+    <TableLayout android:layout_marginTop="15dp">
+        <TableRow android:gravity="center">
+            <Button
+                android:onClick="actualizarLocal"
+                android:layout_marginRight="15dp"
+                android:text="@string/actualizar" />
+
+            <Button
+                android:onClick="limpiarTexto"
+                android:text="@string/limpiar" />
+        </TableRow>
+    </TableLayout>
 
 </TableLayout>

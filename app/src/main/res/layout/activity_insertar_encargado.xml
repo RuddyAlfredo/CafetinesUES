@@ -8,29 +8,40 @@
     android:stretchColumns="1"
     tools:context=".pm11074.Encargado.InsertarEncargadoActivity">
 
-    <TableRow>
-        <TextView android:text="@string/identificador"/>
-        <EditText
-            android:id="@+id/editId"
-            android:inputType="text"
-            android:maxLength="7" />
-    </TableRow>
-    <TableRow>
-        <TextView android:text="@string/nombre" />
-        <EditText
-            android:id="@+id/editNombre"
-            android:inputType="text"
-            android:maxLength="30" />
-    </TableRow>
+    <TextView
+        android:id="@+id/idConsultarDiaClase"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:textAlignment="center"
+        android:text="@string/idInsertarEncargado"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="9pt"
+        android:textStyle="bold"></TextView>
+    <TableLayout>
 
-    <TableRow>
-    <Button
-        android:onClick="insertarEncargado"
-        android:text="@string/insertar" />
-    <Button
-        android:onClick="limpiarTexto"
-        android:text="@string/limpiar" />
+        <TableRow>
+            <TextView
+                android:text="@string/nombre"
+                android:layout_marginLeft="5dp"/>
 
-    </TableRow>
+            <EditText
+                android:id="@+id/editNombre"
+                android:layout_width="326dp"
+                android:inputType="text"
+                android:maxLength="50" />
+        </TableRow>
+    </TableLayout>
 
+    <TableLayout android:layout_marginTop="20dp">
+        <TableRow android:gravity="center">
+            <Button
+                android:onClick="insertarEncargado"
+                android:layout_marginRight="20dp"
+                android:text="@string/insertar" />
+            <Button
+                android:onClick="limpiarTexto"
+                android:text="@string/limpiar" />
+        </TableRow>
+    </TableLayout>
 </TableLayout>
