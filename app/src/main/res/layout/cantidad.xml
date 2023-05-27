@@ -1,0 +1,46 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/montoText"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:text="¿Cuántos desea agregar?"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="8pt"></TextView>
+
+    <EditText
+        android:id="@+id/cantidad"
+        android:inputType="number"
+        android:maxLength="3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginBottom="4dp"
+        android:hint="cantidad" />
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content">
+
+        <Button
+            android:onClick="insertar"
+            android:id="@+id/aceptar"
+            android:text="Aceptar"
+            android:layout_marginRight="15dp"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"/>
+        <Button
+            android:onClick="cerrar"
+            android:id="@+id/cancelar"
+            android:text="Cancelar"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"/>
+    </LinearLayout>
+
+</LinearLayout>

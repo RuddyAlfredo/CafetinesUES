@@ -9,7 +9,6 @@
     tools:context=".pm11074.Local.ActualizarLocalActivity">
 
     <TextView
-        android:id="@+id/idConsultarDiaClase"
         android:layout_width="fill_parent"
         android:layout_height="50dp"
         android:layout_marginTop="30dp"

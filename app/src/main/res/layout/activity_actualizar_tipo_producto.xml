@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="10dip"
+    android:stretchColumns="1"
+    tools:context=".sr17012.TipoProducto.ActualizarTipoProductoActivity">
+
+    <TextView
+        android:id="@+id/idConsultarDiaClase"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:textAlignment="center"
+        android:text="@string/idActualizarTipoProducto"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="9pt"
+        android:textStyle="bold"></TextView>
+
+    <TableLayout>
+        <TableRow android:layout_marginBottom="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:textAlignment="center"
+                android:text="@string/identificador" />
+
+            <EditText
+                android:id="@+id/editId"
+                android:layout_width="186dp"
+                android:layout_marginRight="5dp"
+                android:inputType="number"
+                android:maxLength="3" />
+            <Button
+                android:id="@+id/botonConsultar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/consultar"
+                android:onClick="consultarTipoProducto"
+                android:layout_marginRight="10dp"/>
+        </TableRow>
+    </TableLayout>
+
+    <TableLayout>
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:textAlignment="center"
+                android:text="@string/idTipoProducto" />
+
+            <EditText
+                android:id="@+id/editTipo"
+                android:layout_width="297dp"
+                android:inputType="text"
+                android:maxLength="30" />
+
+        </TableRow>
+    </TableLayout>
+
+    <TableLayout
+        android:layout_marginTop="30dp">
+        <TableRow
+            android:gravity="center">
+
+            <Button
+                android:layout_marginRight="20dp"
+                android:onClick="actualizarTipoProducto"
+                android:text="@string/actualizar" />
+
+            <Button
+                android:onClick="limpiarTexto"
+                android:text="@string/limpiar" />
+        </TableRow>
+    </TableLayout>
+
+</TableLayout>

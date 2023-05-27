@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    tools:context=".hc17018.PrecioProducto.EliminarPrecioProductoActivity">
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:textAlignment="center"
+        android:text="@string/idEliminarPrecioProducto"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="9pt"
+        android:textStyle="bold"></TextView>
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:text="@string/idProducto"
+            android:layout_height="20dp"
+            android:layout_width="wrap_content"/>
+
+        <Spinner
+            android:id="@+id/editIdProdSpinner"
+            android:layout_width="205dp"
+            android:layout_height="wrap_content"
+            android:minHeight="25dp" />
+
+        <Button
+            android:id="@+id/botonConsultar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/consultar"
+            android:onClick="consultarPrecioProducto"
+            android:layout_marginRight="10dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="15dp"
+        android:gravity="left"
+        android:orientation="vertical">
+
+        <TextView
+            android:text="@string/precio"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"/>
+
+        <EditText
+            android:id="@+id/editPrecio"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:enabled ="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:cursorVisible="false"
+            android:longClickable="false" />
+
+        <TextView
+            android:text="@string/fecha"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"/>
+
+        <EditText
+            android:id="@+id/editFecha"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:enabled ="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:cursorVisible="false"
+            android:longClickable="false" />
+
+        <Button
+            android:id="@+id/btnEliminar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/eliminar"
+            android:onClick="eliminarPrecioProducto"/>
+
+    </LinearLayout>
+</LinearLayout>

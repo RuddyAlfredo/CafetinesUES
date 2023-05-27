@@ -45,8 +45,8 @@ public class ActualizarLocalActivity extends Activity {
         Local local = new Local();
 
         String idEncargado = "";
-
-        if(editIdEncSpinner.getSelectedItemPosition() != 0) {
+        //Si elegimos otro valor del spinner
+        if(editIdEncSpinner.getSelectedItemPosition() != 0) { // Si no está seleccionado el primero del Spinner
             String cadena = editIdEncSpinner.getSelectedItem().toString();
             for (int i = 0; i < cadena.length(); i++) {
                 if (cadena.charAt(i) == ' ') { // Si el carácter en [i] es un espacio (' ') ahi cortamos
@@ -55,7 +55,7 @@ public class ActualizarLocalActivity extends Activity {
                 }
             }
         }
-        else{
+        else{ // Si no se elige otro volvemos a tomar el que ya está
             String cadena = editIdEncActual.getText().toString();
             for (int i = 0; i < cadena.length(); i++) {
                 if (cadena.charAt(i) == ' ') { // Si el carácter en [i] es un espacio (' ') ahi cortamos

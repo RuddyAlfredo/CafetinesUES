@@ -11,32 +11,96 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CafetinesUES"
         tools:targetApi="31">
-
-
+        <activity
+            android:name=".EliminarMontoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ActualizarMontoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ConsultarMontoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".InsertarMontoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MontoMenuActivity"
+            android:exported="false" />
+        <activity
+            android:name="sv.ues.fia.eisi.cafetinesues.sr17012.Pedido.ActualizarPedidoActivity"
+            android:exported="false" />
+        <activity
+            android:name="sv.ues.fia.eisi.cafetinesues.sr17012.Pedido.EliminarPedidoActivity"
+            android:exported="false" />
+        <activity
+            android:name="sv.ues.fia.eisi.cafetinesues.sr17012.Pedido.ConsultarPedidoActivity"
+            android:exported="false" />
+        <activity
+            android:name="sv.ues.fia.eisi.cafetinesues.sr17012.Pedido.InsertarPedidoActivity"
+            android:exported="false" />
+        <activity
+            android:name="sv.ues.fia.eisi.cafetinesues.sr17012.Pedido.PedidoMenuActivity"
+            android:exported="false" />
+        <activity
+            android:name="sv.ues.fia.eisi.cafetinesues.sr17012.Combo.EliminarComboActivity"
+            android:exported="false" />
+        <activity
+            android:name="sv.ues.fia.eisi.cafetinesues.sr17012.Combo.ActualizarComboActivity"
+            android:exported="false" />
+        <activity
+            android:name="sv.ues.fia.eisi.cafetinesues.sr17012.Combo.ConsultarComboActivity"
+            android:exported="false" />
+        <activity
+            android:name="sv.ues.fia.eisi.cafetinesues.sr17012.Combo.InsertarComboActivity"
+            android:exported="false" />
+        <activity
+            android:name="sv.ues.fia.eisi.cafetinesues.sr17012.Combo.ComboMenuActivity"
+            android:exported="false" />
+        <activity
+            android:name="sv.ues.fia.eisi.cafetinesues.sr17012.TipoProducto.EliminarTipoProductoActivity"
+            android:exported="false" />
+        <activity
+            android:name="sv.ues.fia.eisi.cafetinesues.sr17012.TipoProducto.ActualizarTipoProductoActivity"
+            android:exported="false" />
+        <activity
+            android:name="sv.ues.fia.eisi.cafetinesues.sr17012.TipoProducto.ConsultarTipoProductoActivity"
+            android:exported="false" />
+        <activity
+            android:name="sv.ues.fia.eisi.cafetinesues.sr17012.TipoProducto.InsertarTipoProductoActivity"
+            android:exported="false" />
+        <activity
+            android:name="sv.ues.fia.eisi.cafetinesues.sr17012.TipoProducto.TipoProductoMenuActivity"
+            android:exported="false" />
+        <activity android:name="sv.ues.fia.eisi.cafetinesues.hc17018.Producto.ActualizarProductoActivity" />
+        <activity android:name="sv.ues.fia.eisi.cafetinesues.hc17018.Producto.EliminarProductoActivity" />
+        <activity android:name="sv.ues.fia.eisi.cafetinesues.hc17018.Producto.ConsultarProductoActivity" />
+        <activity android:name="sv.ues.fia.eisi.cafetinesues.hc17018.Producto.InsertarProductoActivity" />
+        <activity android:name="sv.ues.fia.eisi.cafetinesues.hc17018.Producto.ProductoMenuActivity" />
+        <activity android:name="sv.ues.fia.eisi.cafetinesues.hc17018.PrecioProducto.EliminarPrecioProductoActivity" />
+        <activity android:name="sv.ues.fia.eisi.cafetinesues.hc17018.PrecioProducto.ConsultarPrecioProductoActivity" />
+        <activity android:name="sv.ues.fia.eisi.cafetinesues.hc17018.PrecioProducto.InsertarPrecioProductoActivity" />
+        <activity android:name="sv.ues.fia.eisi.cafetinesues.hc17018.PrecioProducto.ActualizarPrecioProductoActivity" />
+        <activity android:name="sv.ues.fia.eisi.cafetinesues.hc17018.PrecioProducto.PrecioProductoMenuActivity" />
         <activity android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Local.ActualizarLocalActivity" />
         <activity android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Local.EliminarLocalActivity" />
         <activity android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Local.ConsultarLocalActivity" />
         <activity android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Local.InsertarLocalActivity" />
         <activity android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Local.LocalMenuActivity" />
-
         <activity android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Facultad.InsertarFacultadActivity" />
         <activity android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Facultad.EliminarFacultadActivity" />
         <activity android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Facultad.ConsultarFacultadActivity" />
         <activity android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Facultad.ActualizarFacultadActivity" />
         <activity android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Facultad.FacultadMenuActivity" />
-
         <activity android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Encargado.ActualizarEncargadoActivity" />
         <activity android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Encargado.ConsultarEncargadoActivity" />
         <activity android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Encargado.EliminarEncargadoActivity" />
         <activity android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Encargado.InsertarEncargadoActivity" />
         <activity android:name="sv.ues.fia.eisi.cafetinesues.pm11074.Encargado.EncargadoMenuActivity" />
-
         <activity android:name="sv.ues.fia.eisi.cafetinesues.mc15048.Zona.ZonaMenuActivity" />
         <activity android:name="sv.ues.fia.eisi.cafetinesues.mc15048.Zona.InsertarZonaActivity" />
-        <activity android:name="sv.ues.fia.eisi.cafetinesues.mc15048.Zona.ConsultaZonaActivity"/>
-        <activity android:name="sv.ues.fia.eisi.cafetinesues.mc15048.Zona.EliminarZonaActivity"/>
-        <activity android:name="sv.ues.fia.eisi.cafetinesues.mc15048.Zona.ActualizarZonaActivity"/>
-
+        <activity android:name="sv.ues.fia.eisi.cafetinesues.mc15048.Zona.ConsultaZonaActivity" />
+        <activity android:name="sv.ues.fia.eisi.cafetinesues.mc15048.Zona.EliminarZonaActivity" />
+        <activity android:name="sv.ues.fia.eisi.cafetinesues.mc15048.Zona.ActualizarZonaActivity" />
         <activity android:name="sv.ues.fia.eisi.cafetinesues.mc15048.Empleado.EmpleadoMenuActivity" />
         <activity android:name="sv.ues.fia.eisi.cafetinesues.mc15048.Empleado.InsertarEmpleadoActivity" />
         <activity android:name="sv.ues.fia.eisi.cafetinesues.mc15048.Empleado.ConsultarEmpleadoActivity" />
@@ -51,7 +115,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"> </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="sv.ues.fia.eisi.cafetinesues.hc17018.Monto.ConsultarMontoActivity" />
     </application>
 
 </manifest>

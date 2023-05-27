@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="30dip"
+    android:stretchColumns="1"
+    tools:context=".sr17012.TipoProducto.InsertarTipoProductoActivity">
+
+    <TextView
+        android:id="@+id/idConsultarDiaClase"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:textAlignment="center"
+        android:text="@string/idInsertarTipoProducto"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="9pt"
+        android:textStyle="bold"></TextView>
+
+    <TableLayout>
+
+        <TableRow>
+            <TextView
+                android:text="@string/idTipoProducto"
+                android:layout_marginLeft="5dp"/>
+
+            <EditText
+                android:id="@+id/editTipo"
+                android:layout_width="291dp"
+                android:inputType="text"
+                android:maxLength="30" />
+        </TableRow>
+    </TableLayout>
+
+    <TableLayout android:layout_marginTop="20dp">
+        <TableRow android:gravity="center">
+            <Button
+                android:onClick="insertarTipoProducto"
+                android:layout_marginRight="20dp"
+                android:text="@string/insertar" />
+            <Button
+                android:onClick="limpiarTexto"
+                android:text="@string/limpiar" />
+        </TableRow>
+    </TableLayout>
+
+</TableLayout>

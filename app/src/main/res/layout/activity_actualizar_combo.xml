@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="30dip"
+    android:stretchColumns="1"
+    tools:context=".sr17012.Combo.ActualizarComboActivity">
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="1dp"
+        android:textAlignment="center"
+        android:text="@string/idActualizarCombo"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="9pt"
+        android:textStyle="bold"></TextView>
+
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp">
+
+      <TableRow android:layout_height="70dp">
+        <TextView
+            android:text="@string/local"
+            android:gravity="center"
+            android:layout_marginTop="10dp"/>
+
+        <Spinner
+            android:id="@+id/editIdLocalSpinner"
+            android:minHeight="25dp"
+            android:layout_marginTop="5dp"
+            android:layout_width="fill_parent"
+            android:layout_height="30dp" />
+      </TableRow>
+      <TableRow>
+        <TextView
+            android:text="@string/idCombo"
+            android:layout_marginTop="10dp"/>
+
+        <Spinner
+            android:id="@+id/editIdComboSpinner"
+            android:minHeight="25dp"
+            android:layout_marginTop="5dp"
+            android:layout_width="fill_parent"
+            android:layout_height="30dp" />
+      </TableRow>
+      <TableLayout>
+        <TableRow
+            android:gravity="center"
+            android:layout_marginTop="20dp">
+          <Button
+              android:onClick="consultarCombo"
+              android:text="@string/consultar" />
+        </TableRow>
+      </TableLayout>
+      <TableRow>
+        <TextView
+            android:text="@string/nombre"
+            android:gravity="center"/>
+
+        <EditText
+            android:id="@+id/editNombre"
+            android:layout_width="312dp"
+            android:inputType="text"
+            android:maxLength="50" />
+      </TableRow>
+
+      <TableRow>
+        <TextView
+            android:text="@string/precio"
+            android:gravity="center"/>
+
+        <EditText
+            android:id="@+id/editPrecio"
+            android:layout_width="312dp"
+            android:inputType="numberDecimal"
+            android:maxLength="6" />
+      </TableRow>
+      <TableRow>
+        <TextView
+            android:layout_gravity="center|left"
+            android:text="@string/opcionDisponible" />
+        <CheckBox
+            android:id="@+id/disponible"
+            android:layout_gravity="left" />
+      </TableRow>
+      <TableLayout>
+
+        <TableRow>
+              <TextView
+                  android:text="@string/ifoProducto"
+                  android:layout_marginTop="10dp"/>
+        </TableRow>
+      </TableLayout>
+      <TableRow>
+        <TextView
+            android:text="@string/idProducto"
+            android:layout_marginTop="10dp"/>
+
+        <Spinner
+            android:id="@+id/editIdProductoSpinner"
+            android:minHeight="25dp"
+            android:layout_marginTop="5dp"
+            android:layout_width="fill_parent"
+            android:layout_height="30dp" />
+      </TableRow>
+
+      <TableLayout>
+        <TableRow
+            android:gravity="center"
+            android:layout_marginTop="20dp">
+          <Button
+              android:onClick="actualizarCombo"
+              android:text="@string/actualizar" />
+          <Button
+              android:onClick="limpiarTexto"
+              android:text="@string/limpiar"
+              android:layout_marginHorizontal="20dp"/>
+        </TableRow>
+      </TableLayout>
+      <ListView
+          android:id="@+id/listaCombo"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"/>
+
+    </TableLayout>
+  </TableLayout>

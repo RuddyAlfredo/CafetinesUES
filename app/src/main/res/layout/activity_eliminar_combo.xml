@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="30dip"
+    android:stretchColumns="1"
+    tools:context=".sr17012.Combo.EliminarComboActivity">
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:textAlignment="center"
+        android:text="@string/idEliminarCombo"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="9pt"
+        android:textStyle="bold"></TextView>
+
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp">
+
+            <TableRow android:layout_height="70dp">
+                <TextView
+                    android:text="@string/local"
+                    android:gravity="center"
+                    android:layout_marginTop="10dp"/>
+
+                <Spinner
+                    android:id="@+id/editIdLocalSpinner"
+                    android:layout_width="334dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="5dp"
+                    android:minHeight="25dp" />
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:text="@string/idCombo"
+                    android:layout_marginTop="10dp"/>
+
+                <Spinner
+                    android:id="@+id/editIdComboSpinner"
+                    android:minHeight="25dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="fill_parent"
+                    android:layout_height="30dp" />
+            </TableRow>
+        </TableLayout>
+
+        <TableLayout>
+            <TableRow
+                android:gravity="center"
+                android:layout_marginTop="20dp">
+                <Button
+                    android:onClick="eliminarCombo"
+                    android:text="@string/eliminar" />
+
+            </TableRow>
+        </TableLayout>
+
+</TableLayout>

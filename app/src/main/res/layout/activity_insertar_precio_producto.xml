@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:paddingTop="30dip"
     android:stretchColumns="1"
-    tools:context=".pm11074.Local.InsertarLocalActivity">
+    tools:context=".hc17018.PrecioProducto.InsertarPrecioProductoActivity">
 
     <TextView
         android:id="@+id/idConsultarDiaClase"
@@ -14,7 +14,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="30dp"
         android:textAlignment="center"
-        android:text="@string/idInsertarLocal"
+        android:text="@string/idInsertarPrecioProdcuto"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textSize="9pt"
         android:textStyle="bold"></TextView>
@@ -25,11 +25,11 @@
 
         <TableRow>
             <TextView
-                android:text="@string/idEncargado"
+                android:text="@string/idProducto"
                 android:layout_marginTop="6dp"/>
 
             <Spinner
-                android:id="@+id/editIdEncSpinner"
+                android:id="@+id/editIdProdSpinner"
                 android:minHeight="25dp"
                 android:layout_marginTop="5dp"
                 android:layout_width="fill_parent"
@@ -38,23 +38,14 @@
 
         <TableRow>
             <TextView
-                android:text="@string/nombre"
+                android:text="@string/precio"
                 android:gravity="center"/>
 
             <EditText
-                android:id="@+id/editNombre"
+                android:id="@+id/editPrecio"
                 android:layout_width="312dp"
-                android:inputType="text"
-                android:maxLength="50" />
-        </TableRow>
-
-        <TableRow>
-            <TextView
-                android:layout_gravity="center"
-                android:text="@string/opcionEsInterno" />
-            <CheckBox
-                android:id="@+id/checkEsInterno"
-                android:layout_gravity="left" />
+                android:inputType="numberDecimal"
+                android:maxLength="6" />
         </TableRow>
     </TableLayout>
 
@@ -63,7 +54,7 @@
             android:gravity="center"
             android:layout_marginTop="20dp">
             <Button
-                android:onClick="insertarLocal"
+                android:onClick="insertarPrecioProducto"
                 android:text="@string/insertar" />
             <Button
                 android:onClick="limpiarTexto"

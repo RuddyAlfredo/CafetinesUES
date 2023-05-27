@@ -28,24 +28,27 @@ public class MainActivity extends ListActivity {
 
 // Listado con toddos los menus disponibles, DE AQUI SE ELEGIRÁ A LO QUE CADA USUARIO TIENE ACCESO
     String[] allOptions = {
-        "Gestionar Encargados","Gestionar Locales","Gestionar Facultades","Gestionar Producto","Gestionar Combo","Gestionar Combo/Producto","Gestionar Zona","Gestionar Producto",
-        "Gestionar Empleados"
+        "Gestionar Encargados","Gestionar Locales","Gestionar Facultades","Gestionar Pedido","Gestionar Combo",
+        "Gestionar Zona",/*"Gestionar Ubicación",*/"Gestionar Empleados","Gestionar Precio/Producto","Gestionar Producto",
+        "Gestionar Tipo de Producto",
     };
 
     ArrayList<String> MenuActivities = new ArrayList<String>(); // Listado para agregar las MenuActivities a las que tiene acceso un usuario.
 
-// Listado de todas las Activities disponibles, DEBEN ESTAR EN EL MISMO ORDEN QUE EL MENU ALLOPTIONS
+// Listado de todas las Activities disponibles, DEBEN ESTAR EN EL MISMO ORDEN QUE EL ARRAY ALLOPTIONS
 // Por Ejemplo: en 1er lugar en allOptions esta Gestionar Encargado por tanto EncargadoMenuActivity debe estar en 1er lugar en allActivities y asi con los demas.
      String[] allActivities = {
             "pm11074.Encargado.EncargadoMenuActivity",
             "pm11074.Local.LocalMenuActivity",
             "pm11074.Facultad.FacultadMenuActivity",
-            "ql17001activities.horario.HorarioMenuActivity",
-            "hr17016activities.salon.salonMenuActivity",
-            "hr17016activities.tiposalon.tipoSalonMenuActivity",
+            "sr17012.Pedido.PedidoMenuActivity",
+            "sr17012.Combo.ComboMenuActivity",
             "mc15048.Zona.ZonaMenuActivity",
-            "hr17016activities.tiposalon.tipoSalonMenuActivity",
-            "mc15048.Empleado.EmpleadoMenuActivity"
+            /*"mc15048.Ubicacion.UbicacionMenuActivity",*/
+            "mc15048.Empleado.EmpleadoMenuActivity",
+            "hc17018.PrecioProducto.PrecioProductoMenuActivity",
+            "hc17018.Producto.ProductoMenuActivity",
+            "sr17012.TipoProducto.TipoProductoMenuActivity"
     };
 
     @Override
