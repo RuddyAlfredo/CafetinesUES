@@ -11,21 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CafetinesUES"
         tools:targetApi="31">
-        <activity
-            android:name=".EliminarMontoActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ActualizarMontoActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ConsultarMontoActivity"
-            android:exported="false" />
-        <activity
-            android:name=".InsertarMontoActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MontoMenuActivity"
-            android:exported="false" />
+
         <activity
             android:name="sv.ues.fia.eisi.cafetinesues.sr17012.Pedido.ActualizarPedidoActivity"
             android:exported="false" />
@@ -118,13 +104,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
-        <activity android:name="sv.ues.fia.eisi.cafetinesues.hc17018.Monto.ConsultarMontoActivity" />
     </application>
 
 </manifest>
