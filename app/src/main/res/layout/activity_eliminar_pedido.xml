@@ -134,14 +134,22 @@
         android:text="@string/eliminar"
         android:onClick="eliminarPedido"/>
 </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout5"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:layout_marginTop="15dp"
+        android:orientation="vertical">
     <ListView
         android:id="@+id/listaProductos"
-        android:layout_width="392dp"
-        android:layout_height="131dp" />
+        android:layout_width="401dp"
+        android:layout_height="164dp" />
 
     <ListView
         android:id="@+id/listaCombos"
-        android:layout_width="392dp"
-        android:layout_height="65dp" />
-
+        android:layout_width="307dp"
+        android:layout_height="match_parent" />
+    </LinearLayout>
 </LinearLayout>

@@ -36,8 +36,8 @@
             android:id="@+id/editId"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:inputType="text"
-            android:maxLength="2"/>
+            android:inputType="number"
+            android:maxLength="3"/>
     </LinearLayout>
 
     <LinearLayout
@@ -148,13 +148,13 @@
         android:text="@string/contiene" />
 
     <ListView
-        android:id="@+id/listaProductos"
-        android:layout_width="392dp"
-        android:layout_height="131dp" />
-
-    <ListView
         android:id="@+id/listaCombos"
         android:layout_width="307dp"
-        android:layout_height="wrap_content" />
+        android:layout_height="131dp"/>
+    <ListView
+        android:id="@+id/listaProductos"
+        android:layout_width="307dp"
+        android:layout_height="131dp" />
+
 
 </LinearLayout>

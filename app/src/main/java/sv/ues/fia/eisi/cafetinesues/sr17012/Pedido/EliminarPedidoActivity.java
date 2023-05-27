@@ -28,18 +28,14 @@ public class EliminarPedidoActivity extends Activity {
     TextView editTipoPedido;
     TextView editTipoPago;
     TextView editId;
-    TextView editPagado;
     ListView listaProductos;
     ListView listaCombos;
-    ArrayList<String> prodIds = new ArrayList<String>();
-    ArrayList<String> prodNames = new ArrayList<String>();
-    ArrayList<Integer> prodCantidades = new ArrayList<Integer>();
-    ArrayList<String> prodPrecios = new ArrayList<String>();
 
-    ArrayList<String> comboIds = new ArrayList<String>();
+    String idBackup="";
+    ArrayList<String> prodNames = new ArrayList<String>();
+
     ArrayList<String> comboNames = new ArrayList<String>();
-    ArrayList<Integer> comboCantidades = new ArrayList<Integer>();
-    ArrayList<String> comboPrecios = new ArrayList<String>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +65,7 @@ public class EliminarPedidoActivity extends Activity {
                 editLocal.setText(p.getIdLocal());
                 editTipoPago.setText(p.getIdTipoPago());
                 editTipoPedido.setText(p.getIdTipoPedido());
-
+                idBackup = p.getIdPedido();
                 prodNames = p.getProdNames();
                 comboNames = p.getComboNames();
                 listaCombos();
@@ -85,7 +81,6 @@ public class EliminarPedidoActivity extends Activity {
         editLocal.setText("");
         editTipoPedido.setText("");
         editTipoPago.setText("");
-        editPagado.setText("");
 
         clearList();
     }
@@ -130,7 +125,7 @@ public class EliminarPedidoActivity extends Activity {
 
                 String regEliminados;
                 Pedido p = new Pedido();
-                p.setIdPedido(editId.getText().toString());
+                p.setIdPedido(idBackup);
                 helper.abrir();
                 regEliminados = helper.eliminar(p);
                 helper.cerrar();

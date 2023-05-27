@@ -361,6 +361,7 @@ public class ControlBD {
         db.execSQL("INSERT INTO precioProducto VALUES (17,16,0.50,1,'14/05/2023');");
         db.execSQL("INSERT INTO precioProducto VALUES (18,17,0.25,1,'14/05/2023');");
         db.execSQL("INSERT INTO precioProducto VALUES (19,18,2.50,1,'14/05/2023');");
+        db.execSQL("INSERT INTO precioProducto VALUES (20,6,0.20,1,'14/05/2023');");
 
 
 
@@ -412,8 +413,20 @@ public class ControlBD {
         db.execSQL("INSERT INTO comboProducto VALUES (6,14);");
         db.execSQL("INSERT INTO comboProducto VALUES (6,18);");
 
+        db.execSQL("INSERT INTO pedido VALUES (1,1,1,1,1,2.5,'13/05/2023',0);");
+        db.execSQL("INSERT INTO pedido VALUES (2,1,2,3,3,4,'13/05/2023',0);");
+        db.execSQL("INSERT INTO pedido VALUES (3,1,3,2,2,3.35,'13/05/2023',0);");
 
+        db.execSQL("INSERT INTO detallePedido VALUES (1,6,1,6,3,null,null);");
+        db.execSQL("INSERT INTO detallePedido VALUES (2,6,1,1,1,null,null);");
+        db.execSQL("INSERT INTO detallePedido VALUES (3,6,1,5,1,null,null);");
 
+        db.execSQL("INSERT INTO detallePedido VALUES (4,7,2,14,1,null,null);");
+        db.execSQL("INSERT INTO detallePedido VALUES (5,7,2,null,null,5,1);");
+
+        db.execSQL("INSERT INTO detallePedido VALUES (6,8,3,7,1,null,null);");
+        db.execSQL("INSERT INTO detallePedido VALUES (7,8,3,9,1,null,null);");
+        db.execSQL("INSERT INTO detallePedido VALUES (8,8,3,8,1,null,null);");
 
         Usuario usuario = new Usuario();
         for(int i = 0; i < valIdUsuario.length; i++){
@@ -1350,7 +1363,7 @@ public class ControlBD {
 
         if (verificarIntegridad(pedido,13)) {
             contador += db.delete("detallePedido", "idPedido ='" + pedido.getIdPedido() + "'", null);
-            contador += db.delete("combo", "idCombo ='" + pedido.getIdPedido() + "'", null);
+            contador += db.delete("pedido", "idPedido ='" + pedido.getIdPedido() + "'", null);
             regAfectados = "filas afectadas = " + contador;
         }
         return regAfectados;
@@ -1643,6 +1656,7 @@ public class ControlBD {
                 if(cm.moveToFirst()){
                     return false;
                 }
+                return true;
             }
             case 13:
             {        //verificar que exista el Pedido
