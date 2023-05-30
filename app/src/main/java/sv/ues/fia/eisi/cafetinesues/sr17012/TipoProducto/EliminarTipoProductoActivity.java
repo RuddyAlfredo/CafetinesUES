@@ -61,7 +61,7 @@ public class EliminarTipoProductoActivity extends Activity {
             /*helper.abrir();
             regEliminados = helper.eliminar(tp);
             helper.cerrar();*/
-            EliminarServicioWeb("http://http://192.168.58.101:80/cafetines/eliminar_tipo.php");
+            EliminarServicioWeb("http://192.168.58.101:80/cafetines/eliminar_tipo.php", tp);
            //Toast.makeText(this, regEliminados, Toast.LENGTH_SHORT).show();
             eliminar.setEnabled(false);
             editTipo.setText("");
@@ -81,7 +81,7 @@ public class EliminarTipoProductoActivity extends Activity {
 
     }
 
-    public void EliminarServicioWeb(String URL){
+    public void EliminarServicioWeb(String URL, TipoProducto tp){
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -97,7 +97,7 @@ public class EliminarTipoProductoActivity extends Activity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> parametros = new HashMap<String, String>();
-                parametros.put("idTipoProducto", editId.getText().toString());
+                parametros.put("idTipoProducto", tp.getIdTipoProducto());
                 return parametros;
             }
         };
