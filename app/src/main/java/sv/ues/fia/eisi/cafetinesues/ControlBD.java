@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.android.volley.toolbox.StringRequest;
+
 import java.util.ArrayList;
 
 import sv.ues.fia.eisi.cafetinesues.Modelos.AccesoUsuario;
@@ -66,7 +68,7 @@ public class ControlBD {
         DBHelper = new DatabaseHelper(context);
     }
 
-    private static class DatabaseHelper extends SQLiteOpenHelper {
+     private static class DatabaseHelper extends SQLiteOpenHelper {
         private static final String BASE_DATOS = "cafetines.s3db";
         private static final int VERSION = 1;
         DatabaseHelper(Context context) {
@@ -146,6 +148,20 @@ public class ControlBD {
                         "SELECT CASE WHEN ((SELECT carnet FROM alumno WHERE carnet = NEW.carnet) IS NULL) " +
                         "THEN RAISE(ABORT, 'No existe alumno') " +
                         "END; " +
+                        "END;");
+
+                db.execSQL("CREATE TRIGGER delete_zona " +
+                        "BEFORE DELETE ON zona " +
+                        "FOR EACH ROW " +
+                        "BEGIN " +
+                        "DELETE FROM empleado WHERE idZona = OLD.idZona; " +
+                        "END;");
+
+                db.execSQL("CREATE TRIGGER delete_local " +
+                        "BEFORE DELETE ON local " +
+                        "FOR EACH ROW " +
+                        "BEGIN " +
+                        "DELETE FROM empleado WHERE idLocal = OLD.idLocal; " +
                         "END;");
 
             } catch (SQLException e) {
@@ -452,18 +468,18 @@ public class ControlBD {
         }
 
         //Datos iniciales de Zona
-        db.execSQL("INSERT INTO zona VALUES('1','Sur')");
-        db.execSQL("INSERT INTO zona VALUES('2','Norte')");
-        db.execSQL("INSERT INTO zona VALUES('3','Este')");
-        db.execSQL("INSERT INTO zona VALUES('4','Oeste')");
-        db.execSQL("INSERT INTO zona VALUES('5','Noreste')");
+        db.execSQL("INSERT INTO zona VALUES('1','Sur');");
+        db.execSQL("INSERT INTO zona VALUES('2','Norte');");
+        db.execSQL("INSERT INTO zona VALUES('3','Este');");
+        db.execSQL("INSERT INTO zona VALUES('4','Oeste');");
+        db.execSQL("INSERT INTO zona VALUES('5','Noreste');");
         //Datos iniciales de Empleado
-        db.execSQL("INSERT INTO empleado VALUES(1,1,1,'Juan','Perez')");
-        db.execSQL("INSERT INTO empleado VALUES(2,3,2,'Maria','Lopez')");
-        db.execSQL("INSERT INTO empleado VALUES(3,5,3,'Pedro','Gonzalez')");
-        db.execSQL("INSERT INTO empleado VALUES(4,2,3,'Jose','Rodriguez')");
-        db.execSQL("INSERT INTO empleado VALUES(5,4,2,'Ana','Garcia')");
-        db.execSQL("INSERT INTO empleado VALUES(6,4,1,'Carlos','Ramirez')");
+        db.execSQL("INSERT INTO empleado VALUES(1,1,1,'Juan','Perez');");
+        db.execSQL("INSERT INTO empleado VALUES(2,3,2,'Maria','Lopez');");
+        db.execSQL("INSERT INTO empleado VALUES(3,5,3,'Pedro','Gonzalez');");
+        db.execSQL("INSERT INTO empleado VALUES(4,2,3,'Jose','Rodriguez');");
+        db.execSQL("INSERT INTO empleado VALUES(5,4,2,'Ana','Garcia');");
+        db.execSQL("INSERT INTO empleado VALUES(6,4,1,'Carlos','Ramirez');");
 
         cerrar();
 
@@ -844,6 +860,7 @@ public class ControlBD {
 // PRODUCTO =======
 
     public String insertar(Producto producto){
+
         String regInsertados="Registro Insertado Nº= ";
         long contador = 0;
 
